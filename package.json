@@ -1,0 +1,25 @@
+{
+    "name": "owl",
+    "version": "0.0.1",
+    "description": "OWL library for RingoJS/CommonJS",
+    "homepage": "http://github.com/cmungall/owl.js",
+    "keywords": [
+        "commonjs",
+        "owl"
+    ],
+    "author": "Chris Mungall <cjmungall@lbl.gov>",
+    "contributors": [
+    ],
+    "repositories": [
+        {
+            "type": "git",
+            "url": "git://github.com/cmungall/owl.js.git"
+        }
+    ],
+    "bugs": "http://github.com/cmungall/owl.js/issues"
+    ],
+    "engines": {
+        "ringojs": ">= 0.9"
+    },
+    "main": "lib/owl.js"
+}
