@@ -10,10 +10,12 @@ JavaScript runtime written in Java and based on the Mozilla Rhino
 JavaScript engine.
 
 owl.js makes JVM calls to the OWLAPI, so it would be difficult to port
-this to a non-JVM js engine such as Node. However, the system is
-designed to be one component in an ecosystem, and will soon include a
-RESTful server using JSON-LD, allowing any kinds of client access to
-OWL capabilities.
+this to a non-JVM js engine such as Node. The system is designed to be
+one component in an ecosystem, and will soon include a RESTful server
+using JSON-LD, allowing any kinds of client access to OWL
+capabilities. The same API may be preserved, allowing a node.js client
+to make RESTful calls to a jvm owl.js server as if it were talking to
+the JVM.
 
 # Why JavaScript?
 
