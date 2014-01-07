@@ -5,11 +5,39 @@ the java OWLAPI.
 
 # Requirements
 
-owl.js is designed to work with RingoJS, a CommonJS-based
-JavaScript runtime written in Java and based on the Mozilla Rhino
-JavaScript engine.
+owl.js requires RingoJS, a CommonJS-based JavaScript runtime written
+in Java and based on the Mozilla Rhino JavaScript engine.
 
-# Overview
+owl.js also requires an OWLAPI jar. This repo has the owltools jar
+bundled (which includes the owlapi as part).
+
+# Installation
+
+Download and install ringojs
+http://ringojs.org/
+
+Add ringo and owl.js to your PATH. E.g. assume you checked out this
+repo into a ~/repos directory:
+
+    export PATH=$PATH:$HOME/ringojs/bin
+    export PATH=$PATH:$HOME/repos/owl.js/bin
+
+# API Documentation
+
+ * (http://htmlpreview.github.io/?https://github.com/cmungall/owl.js/blob/master/docs/files/owl-js.html)[owl.js]
+
+
+# Getting started
+
+## Scripts
+
+All scripts are in the (bin/README.md)[bin] directory.
+
+## REPL
+
+See below
+
+## Coding to the API
 
 The core module is owl.js
 
@@ -38,12 +66,7 @@ This is shorthand for the standard CommonJS idiomatic:
 
    var owlClass = owl.find("epithelium");
 
-# Scripts
-
-....
-
-
-# REPL hacking
+## REPL hacking
 
 Currenly the main use for this module is REPL-based OWL hacking. If
 you don't know what this is, then it's probably not for you, at least
@@ -53,14 +76,10 @@ To get a sense see the examples in the predecessor, owlrhino:
 
  * http://code.google.com/p/owltools/wiki/OWLRhino
 
-# More Examples
+## More Examples
 
 See the (currently rather slim) test files directory.
 
-# Documentation
-
-Inline docs are written using naturaldocs syntax. This is easily
-translatable to HTML, but you currently have to do this yourself.
 
 # Future
 
