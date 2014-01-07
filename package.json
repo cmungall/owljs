@@ -16,8 +16,7 @@
             "url": "git://github.com/cmungall/owl.js.git"
         }
     ],
-    "bugs": "http://github.com/cmungall/owl.js/issues"
-    ],
+    "bugs": "http://github.com/cmungall/owl.js/issues",
     "engines": {
         "ringojs": ">= 0.9"
     },

@@ -1,4 +1,4 @@
-var OWL = require("../lib/owl").OWL;
+var {OWL} = require("../lib/owl");
 var assert = require("assert");
 
 importPackage(java.io);

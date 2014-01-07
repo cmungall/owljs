@@ -9,10 +9,65 @@ owl.js is designed to work with RingoJS, a CommonJS-based
 JavaScript runtime written in Java and based on the Mozilla Rhino
 JavaScript engine.
 
+# Overview
+
+The core module is owl.js
+
+## Execution
+
+For convenience, you should use 'ringo-owl' in the bin/ directory -
+this acts the same way as the normal ringo command, but also takes
+care of including the correct owlapi jars in your path.
+
+## Basics
+
+Include this at the top of your code:
+
+    var {OWL} = require("../lib/owl");
+
+This is shorthand for the standard CommonJS idiomatic:
+
+    var OWL = require("../lib/owl").OWL;
+
+## Loading an ontology
+
+    var owl = new OWL();
+    owl.loadOntology("my-ontology.owl");
+
+## Doing stuff
+
+   var owlClass = owl.find("epithelium");
+
+# Scripts
+
+....
+
+
+# REPL hacking
+
+Currenly the main use for this module is REPL-based OWL hacking. If
+you don't know what this is, then it's probably not for you, at least
+not yet.
+
+To get a sense see the examples in the predecessor, owlrhino:
+
+ * http://code.google.com/p/owltools/wiki/OWLRhino
+
+# More Examples
+
+See the (currently rather slim) test files directory.
+
+# Documentation
+
+Inline docs are written using naturaldocs syntax. This is easily
+translatable to HTML, but you currently have to do this yourself.
+
+# Future
+
 owl.js makes JVM calls to the OWLAPI, so it would be difficult to port
 this to a non-JVM js engine such as Node. The system is designed to be
-one component in an ecosystem, and will soon include a RESTful server
-using JSON-LD, allowing any kinds of client access to OWL
+one component in an ecosystem, and may one day include a RESTful
+server using JSON-LD, allowing any kinds of client access to OWL
 capabilities. The same API may be preserved, allowing a node.js client
 to make RESTful calls to a jvm owl.js server as if it were talking to
 the JVM.
@@ -38,22 +93,3 @@ features of the OWLAPI (OntoPerl, Thea/prolog).
 I created a JS library because JS is already widely used in our group
 (both on the client and the server), and easy integration with
 libraries such as bbop.js are a big win.
-
-# What can you do with it?
-
-Currenly the main use for this is REPL-based OWL hacking. If you don't
-know what this is, then it's probably not for you, at least yet.
-
-To get a sense see the examples in the predecessory, owlrhino:
-
- * http://code.google.com/p/owltools/wiki/OWLRhino
-
-# Examples
-
-See the (currently rather slim) test files directory.
-
-# Documentation
-
-Inline docs are written using naturaldocs syntax. This is easily
-translatable to HTML, but you currently have to do this yourself.
-
