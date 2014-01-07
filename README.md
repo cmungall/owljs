@@ -5,7 +5,7 @@ the java OWLAPI.
 
 # Requirements
 
-owl.js requires RingoJS, a CommonJS-based JavaScript runtime written
+owl.js requires [RingoJS](http://ringojs.org/), a CommonJS-based JavaScript runtime written
 in Java and based on the Mozilla Rhino JavaScript engine.
 
 owl.js also requires an OWLAPI jar. This repo has the owltools jar
@@ -26,28 +26,39 @@ repo into a ~/repos directory:
 
  * [owl.js](http://htmlpreview.github.io/?https://github.com/cmungall/owl.js/blob/master/docs/files/owl-js.html)
 
-
 # Getting started
 
-## Scripts
+You can use the pre-packaged scripts without any knowledge of the
+API. For more advanced hacking, you can use the REPL. For the
+adventurous, you can use the owl.js API to build server-side
+javascript applications.
 
-All scripts are in the (bin/README.md)[bin] directory.
+## Running Scripts
 
-## REPL
+All scripts are in the [bin](bin/README.md) directory.
 
-See below
+(currently fairly minimal, more to follow)
 
-## Coding to the API
+## OWL Hacking
 
-The core module is owl.js
+Hacking can be either interactive (in the REPL) or can involve writing
+your own scripts.
 
-## Execution
+Either requires some knowledge of [the owl.js
+API](http://htmlpreview.github.io/?https://github.com/cmungall/owl.js/blob/master/docs/files/owl-js.html),
+and many some cases, knowledge of the java OWLAPI.
 
-For convenience, you should use 'ringo-owl' in the bin/ directory -
-this acts the same way as the normal ringo command, but also takes
-care of including the correct owlapi jars in your path.
+## REPL hacking
 
-## Basics
+Currenly the main use for this module is REPL-based OWL hacking. If
+you don't know what this is, then it's probably not for you, at least
+not yet.
+
+To get a sense see the examples in the predecessor, owlrhino:
+
+ * http://code.google.com/p/owltools/wiki/OWLRhino
+
+### Writing scripts
 
 Include this at the top of your code:
 
@@ -66,22 +77,13 @@ This is shorthand for the standard CommonJS idiomatic:
 
    var owlClass = owl.find("epithelium");
 
-## REPL hacking
-
-Currenly the main use for this module is REPL-based OWL hacking. If
-you don't know what this is, then it's probably not for you, at least
-not yet.
-
-To get a sense see the examples in the predecessor, owlrhino:
-
- * http://code.google.com/p/owltools/wiki/OWLRhino
-
-## More Examples
+### Unit tests and examples
 
 See the (currently rather slim) test files directory.
 
+# Stability and future directions
 
-# Future
+## Porting to node.js
 
 owl.js makes JVM calls to the OWLAPI, so it would be difficult to port
 this to a non-JVM js engine such as Node. The system is designed to be
@@ -90,6 +92,22 @@ server using JSON-LD, allowing any kinds of client access to OWL
 capabilities. The same API may be preserved, allowing a node.js client
 to make RESTful calls to a jvm owl.js server as if it were talking to
 the JVM.
+
+## Combined use with BBOP and Monarch APIs
+
+owl.js is currently neutral w.r.t. domain - biology, pizzas, ...
+
+It can be combined with complementary domain-specific APIs (either js
+APIs, java APIs, or REST APIs). In particular, I anticipate adding
+scripts that leverage two other js APIs
+
+### bbop.js
+
+TODO
+
+### monarch.js
+
+TODO
 
 # Why JavaScript?
 
@@ -112,3 +130,16 @@ features of the OWLAPI (OntoPerl, Thea/prolog).
 I created a JS library because JS is already widely used in our group
 (both on the client and the server), and easy integration with
 libraries such as bbop.js are a big win.
+
+It's not a perfect solution. Ringo has less of an ecosystem than
+node. And the Rhino engine (which Ringo is built on) has IMHO quite an
+awkward bridge between js and java, particularly when it comes to
+working with arrays or sets (owl.js has some convenience methods for
+wrapping these two). This may be less of an issue in future if we move
+towards some kind of standard REST access to the OWLAPI.
+
+On balance, after having experimented with other options, the js+java
+combination works well for our group. YMMV.
+
+
+
