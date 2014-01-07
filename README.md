@@ -24,7 +24,7 @@ repo into a ~/repos directory:
 
 # API Documentation
 
- * (http://htmlpreview.github.io/?https://github.com/cmungall/owl.js/blob/master/docs/files/owl-js.html)[owl.js]
+ * [owl.js](http://htmlpreview.github.io/?https://github.com/cmungall/owl.js/blob/master/docs/files/owl-js.html)
 
 
 # Getting started
