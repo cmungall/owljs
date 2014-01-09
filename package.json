@@ -1,11 +1,14 @@
 {
     "name": "owl",
     "version": "0.0.1",
-    "description": "OWL library for RingoJS/CommonJS",
+    "description": "A toolkit for using OWL ontologies via the java OWLAPI",
     "homepage": "http://github.com/cmungall/owl.js",
     "keywords": [
         "commonjs",
-        "owl"
+        "owl",
+        "semantic web",
+        "ringo",
+        "bio-ontology",
     ],
     "author": "Chris Mungall <cjmungall@lbl.gov>",
     "contributors": [

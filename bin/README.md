@@ -12,4 +12,7 @@ The shell wrapper actually calls a generic wrapper, ringo-owl, also,
 in this directory, which takes care of mundanities such as setting
 your classpath.
 
+Note the owljs-foo.js file must be both executable and in the PATH for
+this to work.
+
 Note that you can run ringo-owl at any time to get a REPL.
