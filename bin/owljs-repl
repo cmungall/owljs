@@ -1,0 +1,4 @@
+#!/bin/sh
+X=`which owljs-repl.js`
+echo $X
+ringo-owl $X "$@"
