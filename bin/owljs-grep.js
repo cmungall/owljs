@@ -5,15 +5,17 @@ var {OWL} = require("owl");
 function main(args) {
     var script = args.shift();
     var parser = new Parser(system.args);
+    var grepFunc = null;
 
     parser.addOption('h', 'help', null, 'Display help');
     parser.addOption('v', 'invertMatch', null, 'Invert (negate) match');
     parser.addOption('o', 'outputFile', 'File', 'output file (defaults to stdout)');
+    parser.addOption('m', 'match', 'Regexp', 'regular expression applied to serialization of each axiom. E.g. /epithelium/. If specified, no FUNCTION arg is specified.');
 
     var options = parser.parse(args);
 
     if (options.help) {
-        print("Usage: owljs-grep OPTIONS FUNCTION OWLFILE\n");
+        print("Usage: owljs-grep OPTIONS [FUNCTION] OWLFILE\n");
         print("Filters axioms from an ontology using a custom function. See owl.grepAxioms() for more detauls");
         print("\nOptions:");
 	print(parser.help());
@@ -24,8 +26,15 @@ function main(args) {
 
     var owl = new OWL();
 
-    var grepFuncStr = args.shift();
-    var grepFunc = eval(grepFuncStr);
+    if (options.match != null) {
+        var mf = eval(options.match);
+        grepFunc = function(ax) { return mf.test(ax.toString()); };
+    }
+
+    if (grepFunc == null) {
+        var grepFuncStr = args.shift();
+        grepFunc = eval(grepFuncStr);
+    }
 
     args.forEach(function(fn) { owl.loadFile(fn) } );
 

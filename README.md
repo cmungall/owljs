@@ -8,8 +8,8 @@ the java OWLAPI.
 owl.js requires [RingoJS](http://ringojs.org/), a CommonJS-based JavaScript runtime written
 in Java and based on the Mozilla Rhino JavaScript engine.
 
-owl.js also requires an OWLAPI jar. This repo has the owltools jar
-bundled (which includes the owlapi as part).
+owl.js also requires an OWLAPI jar. This repository has the owltools
+jar bundled (which includes the owlapi as part).
 
 # Installation
 
@@ -29,9 +29,8 @@ repo into a ~/repos directory:
 # Getting started
 
 You can use the pre-packaged scripts without any knowledge of the
-API. For more advanced hacking, you can use the REPL. For the
-adventurous, you can use the owl.js API to build server-side
-javascript applications.
+API. For more interactive hacking, you can use the REPL. Custom
+scripts can be built using the the owl.js API.
 
 ## Running Scripts
 
@@ -54,36 +53,45 @@ Currenly the main use for this module is REPL-based OWL hacking. If
 you don't know what this is, then it's probably not for you, at least
 not yet.
 
-To get a sense see the examples in the predecessor, owlrhino:
+To start a REPL session:
 
- * http://code.google.com/p/owltools/wiki/OWLRhino
+    owljs-repl [OWLFILE]
+
+You can type any javascript commands, e.g.
+
+    print(1+2)
+
+Assuming your ontology has the relevant classes, you can add an axiom:
+
+    add(subClassOf(o.epithelium, o.portion_of_tissue))
+
+(note that autocomplete is enabled)
+
+See [repl.md](repl.md) for more examples
 
 ### Writing scripts
 
-Include this at the top of your code:
-
-    var {OWL} = require("../lib/owl");
-
-This is shorthand for the standard CommonJS idiomatic:
-
-    var OWL = require("../lib/owl").OWL;
-
-## Loading an ontology
-
-    var owl = new OWL();
-    owl.loadOntology("my-ontology.owl");
-
-## Doing stuff
-
-   var owlClass = owl.find("epithelium");
+See the bin/ directory for examples of scripts.
 
 ### Unit tests and examples
 
-See the (currently rather slim) test files directory.
+TODO
 
 # Stability and future directions
 
-## Porting to node.js
+## Combined use with BBOP and Monarch APIs
+
+owl.js is currently neutral w.r.t. domain - biology, pizzas, ...
+
+It can be combined with complementary domain-specific APIs (either js
+APIs, java APIs, or REST APIs). In particular, I anticipate adding
+scripts that leverage two other js APIs: bbop-js and
+monarch-api. bbop-js runs under any js engine, and monarch-api is
+developed in ringo.
+
+TODO
+
+## Running under node.js
 
 owl.js makes JVM calls to the OWLAPI, so it would be difficult to port
 this to a non-JVM js engine such as Node. The system is designed to be
@@ -92,22 +100,6 @@ server using JSON-LD, allowing any kinds of client access to OWL
 capabilities. The same API may be preserved, allowing a node.js client
 to make RESTful calls to a jvm owl.js server as if it were talking to
 the JVM.
-
-## Combined use with BBOP and Monarch APIs
-
-owl.js is currently neutral w.r.t. domain - biology, pizzas, ...
-
-It can be combined with complementary domain-specific APIs (either js
-APIs, java APIs, or REST APIs). In particular, I anticipate adding
-scripts that leverage two other js APIs
-
-### bbop.js
-
-TODO
-
-### monarch.js
-
-TODO
 
 # Why JavaScript?
 

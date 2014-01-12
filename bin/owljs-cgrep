@@ -1,0 +1,3 @@
+#!/bin/sh
+X=`which owljs-cgrep.js`
+ringo-owl $X "$@"

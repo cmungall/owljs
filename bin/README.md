@@ -2,6 +2,11 @@ owl.js scripts
 
 Be sure to add this directory to your $PATH
 
+## Scripts
+
+ * [owljs-grep](owljs-grep.js) - filter axioms from an ontology
+ * [owljs-cgrep](owljs-cgrep.js) - filter classes from an ontology
+
 ## Script architecture
 
 Currently each script comes in pairs - the actual implementation
