@@ -12,6 +12,7 @@ function main(args) {
 
     parser.addOption('h', 'help', null, 'Display help');
     parser.addOption('i', 'include', 'File', 'loads js');
+    parser.addOption('e', 'evaluate', 'Code', 'evals code block');
 
     var options = parser.parse(args);
 
@@ -28,6 +29,11 @@ function main(args) {
     owl = new OWL();
 
     args.forEach(function(fn) { owl.loadFile(fn) } );
+
+    owlinit(owl);
+    if (options.evaluate != null) {
+        eval(options.evaluate);
+    }
 
     if (options.include != null) {
         var path = options.include;
