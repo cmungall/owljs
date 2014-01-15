@@ -19,10 +19,10 @@ Run a DL query:
 
 Start a REPL:
 
-   owljs-repl -i bootcl.js cl-edit.owl
-   >> x = someValuesFrom(o.part_of, o.cell)
-   >> cell_parts = owl.getInferredSubClasses(x)
-   >> cell_parts.map(pp)
+    owljs-repl -i bootcl.js cl-edit.owl
+    >> x = someValuesFrom(o.part_of, o.cell)
+    >> cell_parts = owl.getInferredSubClasses(x)
+    >> cell_parts.map(pp)
 
 # Requirements
 
