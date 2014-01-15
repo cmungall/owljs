@@ -11,18 +11,18 @@ function main(args) {
     var parser = new Parser(system.args);
 
     parser.addOption('h', 'help', null, 'Display help');
-    parser.addOption('i', 'include', 'File', 'loads js');
-    parser.addOption('e', 'evaluate', 'Code', 'evals code block');
+    parser.addOption('i', 'include', 'File', 'loads js. Argument can be a path to a js file or a module name');
+    parser.addOption('e', 'evaluate', 'Code', 'evals js code block');
 
     var options = parser.parse(args);
 
     if (options.help) {
-        print("Usage: owljs-grep OPTIONS FUNCTION OWLFILE\n");
-        print("Filters axioms from an ontology using a custom function. See owl.grepAxioms() for more detauls");
+        print("Usage: owljs-grep OPTIONS [ARGUMENTS] [OWLFILE...]\n");
+        print("Starts a repl. See repl docs for more details.");
         print("\nOptions:");
 	print(parser.help());
         print("\nExample:");
-        print("owljs-grep 'function(ax){ return ax.isLogicalAxiom() }' foo.owl");
+        print("owljs-repl -i bootcl.js cl-edit.owl");
 	system.exit('-1');
     }
 

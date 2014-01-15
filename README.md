@@ -7,6 +7,23 @@ the java OWLAPI.
 
 See [the API documentation](http://htmlpreview.github.io/?https://github.com/cmungall/owl.js/blob/master/docs/files/owl-js.html)
 
+Or try some scripts:
+
+Remove annotation assertions from an ontology:
+
+    owljs-grep 'function(ax){ return ax.isLogicalAxiom() }' foo.owl > fooLogical.owl
+
+Run a DL query:
+
+    owljs-dlquery -r elk "'part_of' some 'cell'" foo.owl
+
+Start a REPL:
+
+   owljs-repl -i bootcl.js cl-edit.owl
+   >> x = someValuesFrom(o.part_of, o.cell)
+   >> cell_parts = owl.getInferredSubClasses(x)
+   >> cell_parts.map(pp)
+
 # Requirements
 
 owl.js requires [RingoJS](http://ringojs.org/), a CommonJS-based JavaScript runtime written

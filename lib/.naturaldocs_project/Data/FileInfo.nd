@@ -2,11 +2,12 @@
 JavaScript
 /Users/cjm/repos/owl.js/lib/owl.js	1389749219	1	OWL
 /Users/cjm/repos/owl.js/lib/owl/owlservices.js	1385576424	0	/Users/cjm/repos/owl.js/lib/owl/owlservices.js
+/Users/cjm/repos/owl.js/lib/owlfunc/axiomIsLogical.js	1389750035	0	/Users/cjm/repos/owl.js/lib/owlfunc/axiomIsLogical.js
 /Users/cjm/repos/owl.js/lib/repl.js	1389747084	1	repl
 /Users/cjm/repos/owl.js/lib/owl/addons.js	1385603069	0	/Users/cjm/repos/owl.js/lib/owl/addons.js
 /Users/cjm/repos/owl.js/lib/owl/owlserver.js	1383430601	0	/Users/cjm/repos/owl.js/lib/owl/owlserver.js
-/Users/cjm/repos/owl.js/lib/owlframe.js	1389747193	1	OWLFrame
 /Users/cjm/repos/owl.js/lib/owl/owlframe.js	1376178305	0	/Users/cjm/repos/owl.js/lib/owl/owlframe.js
+/Users/cjm/repos/owl.js/lib/owlframe.js	1389747193	1	OWLFrame
 /Users/cjm/repos/owl.js/lib/obol/anatomy.js	1389595683	0	/Users/cjm/repos/owl.js/lib/obol/anatomy.js
 /Users/cjm/repos/owl.js/lib/obol.js	1389748857	1	obol
 /Users/cjm/repos/owl.js/lib/obol/phenotype.js	1389639724	0	/Users/cjm/repos/owl.js/lib/obol/phenotype.js
