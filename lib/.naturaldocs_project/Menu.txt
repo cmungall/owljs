@@ -1,13 +1,12 @@
 Format: 1.5
 
 
-# You can add a title and sub-title to your menu like this:
-# Title: [project name]
+Title: owl-js
+
+# You can also add a sub-title to your menu like this:
 # SubTitle: [subtitle]
 
-# You can add a footer to your documentation like this:
-# Footer: [text]
-# If you want to add a copyright notice, this would be the place to do it.
+Footer: [<a href="https://github.com/cmungall/owl.js">owl.js on github</a>]
 
 # You can add a timestamp to your documentation like one of these:
 # Timestamp: Generated on month day, year
@@ -46,9 +45,11 @@ Format: 1.5
 # --------------------------------------------------------------------------
 
 
-File: owl.js  (owl.js)
+File: OWL  (no auto-title, owl.js)
 File: OWLFrame  (owlframe.js)
 File: repl  (repl.js)
+File: javautil  (javautil.js)
+File: obol  (obol.js)
 
 Group: Index  {
 

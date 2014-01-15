@@ -34,9 +34,9 @@ scripts can be built using the the owl.js API.
 
 ## Running Scripts
 
-All scripts are in the [bin](bin/README.md) directory.
+All scripts are in the [bin](bin/) directory.
 
-(currently fairly minimal, more to follow)
+See the [bin/README](bin/README.md) for more details
 
 ## OWL Hacking
 

@@ -7,6 +7,7 @@ Be sure to add this directory to your $PATH
  * [owljs-repl](owljs-repl.js) - start a Read-Eval-Print Loop
  * [owljs-grep](owljs-grep.js) - filter axioms from an ontology
  * [owljs-cgrep](owljs-cgrep.js) - filter classes from an ontology
+ * [owljs-dlquery](owljs-dlquery.js) - perform a DL query using a reasoner
 
 ## Script architecture
 

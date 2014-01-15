@@ -43,6 +43,7 @@ function main(args) {
         else {
             include(path);
         }
+        owlinit(owl);
     }
 }
 
