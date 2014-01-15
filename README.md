@@ -3,6 +3,10 @@
 A toolkit for working with OWL ontologies in javascript that leverages
 the java OWLAPI.
 
+# Quickstart
+
+See [the API documentation](http://htmlpreview.github.io/?https://github.com/cmungall/owl.js/blob/master/docs/files/owl-js.html)
+
 # Requirements
 
 owl.js requires [RingoJS](http://ringojs.org/), a CommonJS-based JavaScript runtime written
@@ -22,15 +26,12 @@ repo into a ~/repos directory:
     export PATH=$PATH:$HOME/ringojs/bin
     export PATH=$PATH:$HOME/repos/owl.js/bin
 
-# API Documentation
-
- * [owl.js](http://htmlpreview.github.io/?https://github.com/cmungall/owl.js/blob/master/docs/files/owl-js.html)
 
 # Getting started
 
 You can use the pre-packaged scripts without any knowledge of the
 API. For more interactive hacking, you can use the REPL. Custom
-scripts can be built using the the owl.js API.
+scripts can be built using the the [owl.js API](http://htmlpreview.github.io/?https://github.com/cmungall/owl.js/blob/master/docs/files/owl-js.html)
 
 ## Running Scripts
 
