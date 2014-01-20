@@ -13,6 +13,7 @@ function main(args) {
     parser.addOption('h', 'help', null, 'Display help');
     parser.addOption('i', 'include', 'File', 'loads js. Argument can be a path to a js file or a module name');
     parser.addOption('e', 'evaluate', 'Code', 'evals js code block');
+    parser.addOption('l', 'load', 'File', 'Evals file contents');
 
     var options = parser.parse(args);
 
@@ -34,6 +35,9 @@ function main(args) {
     if (options.evaluate != null) {
         eval(options.evaluate);
     }
+    if (options.load != null) {
+        eval(fs.read(options.load));
+    }
 
     if (options.include != null) {
         var path = options.include;
@@ -52,6 +56,6 @@ if (require.main == module.id) {
 }
 
 owlinit(owl);
-print(">> Weclome!");
+print(">> Welcome!");
 require('ringo/shell').start();
 

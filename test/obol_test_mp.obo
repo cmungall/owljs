@@ -1,0 +1,14 @@
+
+[Term]
+id: PATO:0000051
+name: morphology
+
+[Term]
+id: PHENO:1234567
+name: abnormal epithelium morphology
+is_a: PHENO:0000001
+
+
+[Term]
+id: PHENO:0000001
+name: phenotype

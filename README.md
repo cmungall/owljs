@@ -32,6 +32,7 @@ in Java and based on the Mozilla Rhino JavaScript engine.
 owl.js also requires an OWLAPI jar. This repository has the owltools
 jar bundled (which includes the owlapi as part).
 
+
 # Installation
 
 Download and install ringojs
@@ -43,6 +44,11 @@ repo into a ~/repos directory:
     export PATH=$PATH:$HOME/ringojs/bin
     export PATH=$PATH:$HOME/repos/owl.js/bin
 
+I'm currently working on installation via rp, the ringo package
+manager. For now, do this hacky measure:
+
+    cd $RINGO_HOME/packages/
+    ln -s ~/repos/owl.js owl
 
 # Getting started
 

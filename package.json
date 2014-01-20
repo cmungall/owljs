@@ -19,6 +19,12 @@
             "url": "git://github.com/cmungall/owl.js.git"
         }
     ],
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/ringo/stick/blob/master/LICENSE"
+        }
+    ],   
     "bugs": "http://github.com/cmungall/owl.js/issues",
     "engines": {
         "ringojs": ">= 0.9"
