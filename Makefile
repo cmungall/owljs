@@ -12,5 +12,9 @@ heroku-create:
 heroku-deploy:
 	git push monarch-heroku master
 
-test:
-	ringo-owl test/owl_test.js 
+TEST = ringo-owl
+
+test: test-dlmatch
+
+test-%:
+	$(TEST) test/$*/$*_test.js
