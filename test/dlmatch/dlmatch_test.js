@@ -42,22 +42,18 @@ exports.testMatchIntersection = function() {
     init();
     var part_of = owl.find("part of");
     find( 
-        {
-            a : OWLEquivalentClassesAxiom,
-            classExpressions : 
-            [
-                {
-                    operands: [
-                        "?genus",
-                        {
-                            property: "?p",
-                            filler: "?y"
-                        }
-                    ]
-                },
-                "?c",
-            ]                
-        },
+        matcher.equivalentClassesMatch(
+            {
+                operands: [
+                    "?genus",
+                    {
+                        property: "?p",
+                        filler: "?y"
+                    }
+                ]
+            },
+            "?c"
+        ),
         25,
         {
             c: "ovary",
@@ -72,14 +68,8 @@ exports.testReplace = function() {
     init();
     var part_of = owl.find("part of");
     var newAxioms = matcher.findAndReplace(
-        {
-            a : OWLSubClassOfAxiom,
-            subClass: "?p",
-            superClass : {
-                property : part_of,
-                filler : "?w"
-            }
-        },
+        matcher.subClassOfMatch("?p",
+                                    matcher.objectSomeValuesFromMatch(part_of, "?w")),
         function(m, owl) {
             var ax =
                 owl.equivalentClasses(m.p,

@@ -11,7 +11,24 @@ if (browserType) {document.write("<div class=" + browserType + ">");if (browserV
 
 
 
-<div id=Content><div class="CClass"><div class=CTopic id=MainTopic><h1 class=CTitle><a name="DLMatch"></a>DLMatch</h1><div class=CBody><p>Matches Description Logic axioms and expressions</p><h4 class=CHeading>Tests</h4><ul><li>test/dlmatch</li></ul><!--START_ND_SUMMARY--><div class=Summary><div class=STitle>Summary</div><div class=SBorder><table border=0 cellspacing=0 cellpadding=0 class=STable><tr class="SMain"><td class=SEntry><a href="#DLMatch" >DLMatch</a></td><td class=SDescription>Matches Description Logic axioms and expressions</td></tr><tr class="SGroup SIndent1"><td class=SEntry><a href="#DLMatch.Functions" >Functions</a></td><td class=SDescription></td></tr><tr class="SFunction SIndent2 SMarked"><td class=SEntry><a href="#DLMatch.DLMatch" id=link1 onMouseOver="ShowTip(event, 'tt1', 'link1')" onMouseOut="HideTip('tt1')">DLMatch</a></td><td class=SDescription>Constructor</td></tr><tr class="SFunction SIndent2"><td class=SEntry><a href="#DLMatch.find" id=link2 onMouseOver="ShowTip(event, 'tt2', 'link2')" onMouseOut="HideTip('tt2')">find</a></td><td class=SDescription>Finds axioms in the ontology that match the query template</td></tr><tr class="SFunction SIndent2 SMarked"><td class=SEntry><a href="#DLMatch.findAndReplace" id=link3 onMouseOver="ShowTip(event, 'tt3', 'link3')" onMouseOut="HideTip('tt3')">findAndReplace</a></td><td class=SDescription>Finds and replaces axioms in the ontology that match the query template</td></tr><tr class="SFunction SIndent2"><td class=SEntry><a href="#DLMatch.matches" >matches</a></td><td class=SDescription>Attempts to match the specified axiom or expression with the query template</td></tr></table></div></div><!--END_ND_SUMMARY--></div></div></div>
+<div id=Content><div class="CClass"><div class=CTopic id=MainTopic><h1 class=CTitle><a name="DLMatch"></a>DLMatch</h1><div class=CBody><p>Matches Description Logic axioms and expressions to query templates.</p><h4 class=CHeading>Example</h4><blockquote><pre>var {DLMatcher} = require(&quot;owl/dlmatcher&quot;);
+var q = new DLMatcher(owl);
+var part_of = owl.find(&quot;part of&quot;);
+
+var matches = q.find(
+   q.subClassOfMatch( &quot;?p&quot;, q.objectSomeValuesFromMatch(part_of, &quot;?w&quot;)));
+for (k in matches) {
+  var m = matches[k];
+  print(m.p &quot; is a part of a &quot; + m.p);
+}</pre></blockquote><h4 class=CHeading>Query templates</h4><p>query templates can be specified using a <b>match constructor</b>, for example:</p><ul><li>&lt;subClassOfMatch&gt;</li><li>&lt;objectSomeValuesFromMatch&gt; if match constructors are missing, more can be added on request.</li></ul><h4 class=CHeading>A match constructor is just a means of constructing a dict; for example, this</h4><blockquote><pre>q.subClassOfMatch( &quot;?p&quot;, q.objectSomeValuesFromMatch(part_of, &quot;?w&quot;))</pre></blockquote><p>is equivalent to:</p><blockquote><pre> {
+  a : OWLSubClassOfAxiom,
+  subClass: &quot;?p&quot;,
+  superClass : {
+    a : OWLObjectSomeValuesFrom
+    property : part_of,
+    filler : &quot;?w&quot;
+  }
+}</pre></blockquote><h4 class=CHeading>TODO</h4><p>implement a &ldquo;...&rdquo; that matches any number of arguments</p><h4 class=CHeading>Tests</h4><ul><li>test/dlmatch</li></ul><!--START_ND_SUMMARY--><div class=Summary><div class=STitle>Summary</div><div class=SBorder><table border=0 cellspacing=0 cellpadding=0 class=STable><tr class="SMain"><td class=SEntry><a href="#DLMatch" >DLMatch</a></td><td class=SDescription>Matches Description Logic axioms and expressions to query templates.</td></tr><tr class="SGroup SIndent1"><td class=SEntry><a href="#DLMatch.Functions" >Functions</a></td><td class=SDescription></td></tr><tr class="SFunction SIndent2 SMarked"><td class=SEntry><a href="#DLMatch.DLMatch" id=link1 onMouseOver="ShowTip(event, 'tt1', 'link1')" onMouseOut="HideTip('tt1')">DLMatch</a></td><td class=SDescription>Constructor</td></tr><tr class="SFunction SIndent2"><td class=SEntry><a href="#DLMatch.find" id=link2 onMouseOver="ShowTip(event, 'tt2', 'link2')" onMouseOut="HideTip('tt2')">find</a></td><td class=SDescription>Finds axioms in the ontology that match the query template</td></tr><tr class="SFunction SIndent2 SMarked"><td class=SEntry><a href="#DLMatch.findAndReplace" id=link3 onMouseOver="ShowTip(event, 'tt3', 'link3')" onMouseOut="HideTip('tt3')">findAndReplace</a></td><td class=SDescription>Finds and replaces axioms in the ontology that match the query template</td></tr><tr class="SFunction SIndent2"><td class=SEntry><a href="#DLMatch.matches" >matches</a></td><td class=SDescription>Attempts to match the specified axiom or expression with the query template</td></tr></table></div></div><!--END_ND_SUMMARY--></div></div></div>
 
 <div class="CGroup"><div class=CTopic><h3 class=CTitle><a name="DLMatch.Functions"></a>Functions</h3></div></div>
 
