@@ -1,5 +1,5 @@
 var {OWL} = require("owl");
-var {dlmatch} = require("owl/dlmatch");
+var {DLMatch} = require("owl/dlmatch");
 var assert = require("assert");
 var repl = require("owl/repl");
 
@@ -13,7 +13,7 @@ function init() {
         owl = new OWL();
         repl.owlinit(owl);
         owl.loadOntology("test/data/ceph.owl");
-        matcher = new dlmatch(owl);
+        matcher = new DLMatch(owl);
     }
 }
 
