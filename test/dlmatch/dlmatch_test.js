@@ -68,6 +68,65 @@ exports.testMatchIntersection = function() {
     );
 };
 
+exports.testReplace = function() {
+    init();
+    var part_of = owl.find("part of");
+    var newAxioms = matcher.findAndReplace(
+        {
+            a : OWLSubClassOfAxiom,
+            subClass: "?p",
+            superClass : {
+                property : part_of,
+                filler : "?w"
+            }
+        },
+        function(m, owl) {
+            var ax =
+                owl.equivalentClasses(m.p,
+                                      owl.someValuesFrom(part_of, m.w));
+            repl.pp(ax);
+            return ax;
+        }
+    );
+    print("#Repl="+newAxioms.length);
+    assert.equal(newAxioms.length, 218);
+
+    print("Ensuring no subclass existentials with part_of remain...");
+    find(
+        {
+            a : OWLSubClassOfAxiom,
+            subClass: "?p",
+            superClass : {
+                property : part_of,
+                filler : "?w"
+            }
+        },
+        0);
+
+    print("Ensuring equivalencies are present...");
+    find(
+        {
+            a : OWLEquivalentClassesAxiom,
+            classExpressions: 
+            [
+                "?p",
+                {
+                    property : part_of,
+                    filler : "?w"
+                }
+            ]
+        },
+        218,
+        {
+            p: "tentacle pad",
+            w: "tentacle"
+        }
+    );
+
+    //repl.pp(newAxioms);
+};
+
+
 // Arguments:
 //  - q : queryTemplate
 //  - numExpected: if present, number of results must match this

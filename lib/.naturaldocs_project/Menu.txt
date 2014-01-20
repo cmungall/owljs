@@ -51,7 +51,7 @@ File: repl  (repl.js)
 File: javautil  (javautil.js)
 File: obol  (obol.js)
 File: obo  (obo.js)
-File: dlmatch  (dlmatch.js)
+File: DLMatch  (dlmatch.js)
 
 Group: Index  {
 
