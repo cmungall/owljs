@@ -43,15 +43,10 @@ exports.testMatchIntersection = function() {
     var part_of = owl.find("part of");
     find( 
         matcher.equivalentClassesMatch(
-            {
-                operands: [
-                    "?genus",
-                    {
-                        property: "?p",
-                        filler: "?y"
-                    }
-                ]
-            },
+            matcher.objectIntersectionOfMatch(
+                "?genus",
+                matcher.objectSomeValuesFromMatch("?p", "?y")
+            ),
             "?c"
         ),
         25,
