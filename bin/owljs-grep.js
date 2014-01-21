@@ -2,6 +2,9 @@ var Parser = require('ringo/args').Parser;
 var system = require('system');
 var {OWL} = require("owl");
 
+// have this available for evaluation of user functions
+importPackage(Packages.org.semanticweb.owlapi.model);
+
 function main(args) {
     var script = args.shift();
     var parser = new Parser(system.args);
@@ -56,12 +59,23 @@ function main(args) {
     if (options.load != null) {
         owl.log("Loading "+options.load);
     }
-    //owl.log(args);
+
     var filteredAxioms = owl.grepAxioms(grepFunc, options.invertMatch, true);
     owl.log("#filteredAxioms = " + filteredAxioms.length);
 
-    owl.log("Saving to " + options.outputFile);
-    owl.save(options.outputFile);
+    if (options.jsFrames) {
+        var repl = require("owl/repl");
+        repl.owlinit(owl);
+        //repl.owl = owl;
+        for (var k in filteredAxioms) {
+            var ax = filteredAxioms[k];
+            print(repl.render(ax));
+        }        
+    }
+    else {
+        owl.log("Saving to " + options.outputFile);
+        owl.save(options.outputFile);
+    }
 }
 
 // call the main method; ringo specific

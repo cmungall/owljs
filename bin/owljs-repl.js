@@ -4,7 +4,11 @@ var system = require('system');
 var fs = require('fs');
 var {OWL} = require("owl");
 var {OWLFrame} = require("owl/owlframe");
+var {DLMatch} = require("owl/dlmatch");
 var owl;
+var q;
+
+importPackage(Packages.org.semanticweb.owlapi.model);
 
 function main(args) {
     var script = args.shift();
@@ -24,12 +28,15 @@ function main(args) {
 	print(parser.help());
         print("\nExample:");
         print("owljs-repl -i bootcl.js cl-edit.owl");
+        print("\nDocumentation:");
+        print("See https://github.com/cmungall/owl.js/blob/master/README-REPL.md");
 	system.exit('-1');
     }
 
     owl = new OWL();
 
     args.forEach(function(fn) { owl.loadFile(fn) } );
+    q = new DLMatch(owl);
 
     owlinit(owl);
     if (options.evaluate != null) {

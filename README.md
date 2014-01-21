@@ -91,7 +91,7 @@ Assuming your ontology has the relevant classes, you can add an axiom:
 
 (note that autocomplete is enabled)
 
-See [repl.md](repl.md) for more examples
+See [README-REPL.md](README-REPL.md) for more examples
 
 ### Writing scripts
 

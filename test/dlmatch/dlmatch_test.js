@@ -38,6 +38,29 @@ exports.testMatchExistential = function() {
     );
 };
 
+exports.testMatchConstraint = function() {
+    init();
+    var part_of = owl.find("part of");
+    var tentacle = owl.find("tentacle");
+    // find all axioms ?p SubClassOf part_of some ?w, where ?w is a tentacle
+    // note: this is weaker than a DL query "part_of some tentacle"
+    find(
+        {
+            a : OWLSubClassOfAxiom,
+            subClass: "?p",
+            superClass : {
+                property : part_of,
+                filler : {
+                    var : "w",
+                    constraint : function(w, owl) {
+                        return owl.isInferredSubClassOf(w, tentacle);
+                    }
+                }
+            }
+        },
+        6);
+};
+
 exports.testMatchIntersection = function() {
     init();
     var part_of = owl.find("part of");
@@ -120,7 +143,7 @@ function find(q, numExpected, mustContain) {
     //print("QUERY:");
     repl.pp(q);
     var matches = matcher.find(q);
-    //print("#match = "+matches.length);
+    print("#match = "+matches.length);
     if (numExpected != null) {
         assert.equal(matches.length, numExpected)
     }
