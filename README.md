@@ -17,12 +17,12 @@ Run a DL query:
 
     owljs-dlquery -r elk "'part_of' some 'cell'" foo.owl
 
-Start a REPL:
+Start a [REPL](README-REPL.md):
 
     owljs-repl -i bootcl.js cl-edit.owl
     >> x = someValuesFrom(o.part_of, o.cell)
     >> cell_parts = owl.getInferredSubClasses(x)
-    >> cell_parts.map(pp)
+    >> cell_parts.map(pp) // print all cell parts
 
 # Requirements
 
@@ -99,7 +99,12 @@ See the bin/ directory for examples of scripts.
 
 ### Unit tests and examples
 
-TODO
+To run tests:
+
+    make test
+
+See the [test/](https://github.com/cmungall/owl.js/tree/master/test)
+directory for individual tests.
 
 # Stability and future directions
 
