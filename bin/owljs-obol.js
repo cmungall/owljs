@@ -11,18 +11,19 @@ function main(args) {
     parser.addOption('h', 'help', null, 'Display help');
     parser.addOption('q', 'query', 'String', 'sentence to parse');
     parser.addOption('r', 'rootClass', 'Class', 'root class to restrict search space');
+    parser.addOption('m', 'module', 'Module', 'module in owl/obol to load. E.g. phenotype');
     parser.addOption('o', 'outputFile', 'File', 'output file (defaults to stdout)');
     parser.addOption('t', 'toOutputFormat', 'OWLOntologyFormat', 'output format (defaults to RDFXML)');
 
     var options = parser.parse(args);
 
     if (options.help) {
-        print("Usage: owljs-cgrep OPTIONS [FUNCTION] OWLFILE\n");
-        print("Filters class from an ontology using a custom function. Compare with owljs-grep, which greps axioms");
+        print("Usage: owljs-obol OPTIONS [FUNCTION] OWLFILE\n");
+        print("Parses class labels and annotations using a grammar pattern");
         print("\nOptions:");
 	print(parser.help());
         print("\nExample:");
-        print("owljs-cgrep /epithelium/ foo.owl");
+        print("owljs-obol -m anatomy -r neuron cl.owl");
 	system.exit('-1');
     }
 
@@ -39,15 +40,18 @@ function main(args) {
         owl.log("Loading "+options.load);
     }
 
-    var obol = new Obol(owl);
+    if (options.module != null) {
+        require("owl/obol/" + options.module);
+    }
 
-    require("owl/obol/phenotype");
     var repl = require("owl/repl");
     repl.owlinit(owl);
+    var obol = new Obol(owl, repl.o);
 
     var results;
     if (options.query != null) {
         var str = options.query;
+        console.log("Parsing: "+str);
         results = obol.parse(str, null, repl.o);
         repl.pp(results);
     }
@@ -62,6 +66,7 @@ function main(args) {
         }
 
         var axioms = [];
+        console.log("Parsing, #classes = "+clist.length);
         for (var k in clist) {
             var c = clist[k];
             //var label = owl.getLabel(c); // TODO - other APs
@@ -75,6 +80,7 @@ function main(args) {
                 // TODO - other results
             }
         }
+        console.log("Parsed, #classes = "+clist.length);
         owl.saveAxioms(axioms, options.output);
     }
 }
