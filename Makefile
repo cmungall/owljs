@@ -14,7 +14,7 @@ heroku-deploy:
 
 TEST = ringo-owl
 
-test: test-dlmatch test-repl-author
+test: test-dlmatch test-repl-author test-obol
 
 
 test-repl-%:

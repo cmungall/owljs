@@ -17,7 +17,7 @@ function main(args) {
 
     if (options.help) {
         print("Usage: owljs-cgrep OPTIONS [PATTERN] OWLFILE\n");
-        print("Filters class from an ontology using a custom function. Compare with owljs-grep, which greps axioms");
+        print("Filters class from an ontology using a regexp. Compare with owljs-grep, which greps axioms");
         print("\nOptions:");
 	print(parser.help());
         print("\nExample:");

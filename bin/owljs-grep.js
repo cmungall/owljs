@@ -14,6 +14,7 @@ function main(args) {
     parser.addOption('v', 'invertMatch', null, 'Invert (negate) match');
     parser.addOption('o', 'outputFile', 'File', 'output file (defaults to stdout)');
     parser.addOption('f', 'grepFunctionFile', 'File', 'file containing js that evals to grepFunc. If specified no FUNCTION arg is specified');
+    parser.addOption('e', 'grepEntities', null, 'True if entities (classes, individuals, properties) are to be grepped, no axioms ');
     parser.addOption('m', 'match', 'Regexp', 'regular expression applied to serialization of each axiom. E.g. /epithelium/. If specified, no FUNCTION arg is specified.');
     parser.addOption('t', 'toOutputFormat', 'OWLOntologyFormat', 'output format (defaults to RDFXML)');
     parser.addOption('j', 'jsFrames', null, 'writes output as js frames. TODO');
@@ -60,21 +61,42 @@ function main(args) {
         owl.log("Loading "+options.load);
     }
 
-    var filteredAxioms = owl.grepAxioms(grepFunc, options.invertMatch, true);
-    owl.log("#filteredAxioms = " + filteredAxioms.length);
+    if (options.grepEntities) {
 
-    if (options.jsFrames) {
-        var repl = require("owl/repl");
-        repl.owlinit(owl);
-        //repl.owl = owl;
-        for (var k in filteredAxioms) {
-            var ax = filteredAxioms[k];
-            print(repl.render(ax));
-        }        
+        var filteredObjects = owl.grepObjects(grepFunc, options.invertMatch, true);
+        owl.log("#filteredObjects = " + filteredObjects.length);
+
+        if (options.jsFrames) {
+            var repl = require("owl/repl");
+            repl.owlinit(owl);
+            for (var k in filteredObjects) {
+                var obj = filteredObjects[k];
+                print(repl.render(owl.toFrame(obj)));
+            }        
+        }
+        else {
+            owl.log("Saving to " + options.outputFile);
+            owl.save(options.outputFile);
+        }
     }
     else {
-        owl.log("Saving to " + options.outputFile);
-        owl.save(options.outputFile);
+
+        var filteredAxioms = owl.grepAxioms(grepFunc, options.invertMatch, true);
+        owl.log("#filteredAxioms = " + filteredAxioms.length);
+
+        if (options.jsFrames) {
+            var repl = require("owl/repl");
+            repl.owlinit(owl);
+            //repl.owl = owl;
+            for (var k in filteredAxioms) {
+                var ax = filteredAxioms[k];
+                print(repl.render(ax));
+            }        
+        }
+        else {
+            owl.log("Saving to " + options.outputFile);
+            owl.save(options.outputFile);
+        }
     }
 }
 

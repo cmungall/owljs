@@ -11,11 +11,15 @@ if (browserType) {document.write("<div class=" + browserType + ">");if (browserV
 
 
 
-<div id=Content><div class="CClass"><div class=CTopic id=MainTopic><h1 class=CTitle><a name="obol"></a>obol</h1><div class=CBody><h4 class=CHeading>Status</h4><p>experimental</p><p>When completed, will replace the old obol code for generating equivalence axioms from strings</p><!--START_ND_SUMMARY--><div class=Summary><div class=STitle>Summary</div><div class=SBorder><table border=0 cellspacing=0 cellpadding=0 class=STable><tr class="SMain"><td class=SEntry><a href="#obol" >obol</a></td><td class=SDescription>experimental</td></tr><tr class="SGroup SIndent1"><td class=SEntry><a href="#obol.Functions" >Functions</a></td><td class=SDescription></td></tr><tr class="SFunction SIndent2 SMarked"><td class=SEntry><a href="#obol.parse" id=link1 onMouseOver="ShowTip(event, 'tt1', 'link1')" onMouseOut="HideTip('tt1')">parse</a></td><td class=SDescription></td></tr></table></div></div><!--END_ND_SUMMARY--></div></div></div>
+<div id=Content><div class="CClass"><div class=CTopic id=MainTopic><h1 class=CTitle><a name="obol"></a>obol</h1><div class=CBody><h4 class=CHeading>Status</h4><p>experimental</p><p>When completed, will replace the old obol code for generating equivalence axioms from strings</p><h4 class=CHeading>Rules</h4><blockquote><pre>{
+ head: &quot;NAME&quot;,
+ body: TOKENLIST,
+ gfun: FUNCTION
+}</pre></blockquote><!--START_ND_SUMMARY--><div class=Summary><div class=STitle>Summary</div><div class=SBorder><table border=0 cellspacing=0 cellpadding=0 class=STable><tr class="SMain"><td class=SEntry><a href="#obol" >obol</a></td><td class=SDescription>experimental</td></tr><tr class="SGroup SIndent1"><td class=SEntry><a href="#obol.Functions" >Functions</a></td><td class=SDescription></td></tr><tr class="SFunction SIndent2 SMarked"><td class=SEntry><a href="#obol.parse" id=link1 onMouseOver="ShowTip(event, 'tt1', 'link1')" onMouseOut="HideTip('tt1')">parse</a></td><td class=SDescription></td></tr></table></div></div><!--END_ND_SUMMARY--></div></div></div>
 
 <div class="CGroup"><div class=CTopic><h3 class=CTitle><a name="obol.Functions"></a>Functions</h3></div></div>
 
-<div class="CFunction"><div class=CTopic><h3 class=CTitle><a name="obol.parse"></a>parse</h3><div class=CBody><blockquote><table border=0 cellspacing=0 cellpadding=0 class="Prototype prettyprint"><tr><td><table border=0 cellspacing=0 cellpadding=0><tr><td class=PBeforeParameters nowrap>Obol.prototype.parse = function(</td><td class=PParameter nowrap>qstr,</td></tr><tr><td></td><td class=PParameter nowrap>head,</td></tr><tr><td></td><td class=PParameter nowrap>repl</td><td class=PAfterParameters nowrap>)</td></tr></table></td></tr></table></blockquote><h4 class=CHeading>Arguments</h4><ul><li>qstr : string to parse</li><li>head : head/name of rule to use</li><li>repl : a repl object (used for generation)</li></ul><h4 class=CHeading>Returns</h4><p>list of generated class expressions</p></div></div></div>
+<div class="CFunction"><div class=CTopic><h3 class=CTitle><a name="obol.parse"></a>parse</h3><div class=CBody><blockquote><table border=0 cellspacing=0 cellpadding=0 class="Prototype prettyprint"><tr><td><table border=0 cellspacing=0 cellpadding=0><tr><td class=PBeforeParameters nowrap>Obol.prototype.parse = function(</td><td class=PParameter nowrap>qstr,</td></tr><tr><td></td><td class=PParameter nowrap>head</td><td class=PAfterParameters nowrap>)</td></tr></table></td></tr></table></blockquote><h4 class=CHeading>Arguments</h4><ul><li>qstr : string to parse OR an <a href="owl-js.html#owlapi.OWLNamedObject" class=LGeneric >owlapi.OWLNamedObject</a></li><li>head : (optional) head/name of rule to use (uses all if not specified)</li></ul><h4 class=CHeading>Returns</h4><p>list of match objects</p></div></div></div>
 
 </div><!--Content-->
 
@@ -30,7 +34,7 @@ var searchPanel = new SearchPanel("searchPanel", "HTML", "../search");
 
 
 <!--START_ND_TOOLTIPS-->
-<div class=CToolTip id="tt1"><div class=CFunction><blockquote><table border=0 cellspacing=0 cellpadding=0 class="Prototype prettyprint"><tr><td><table border=0 cellspacing=0 cellpadding=0><tr><td class=PBeforeParameters nowrap>Obol.prototype.parse = function(</td><td class=PParameter nowrap>qstr,</td></tr><tr><td></td><td class=PParameter nowrap>head,</td></tr><tr><td></td><td class=PParameter nowrap>repl</td><td class=PAfterParameters nowrap>)</td></tr></table></td></tr></table></blockquote></div></div><!--END_ND_TOOLTIPS-->
+<div class=CToolTip id="tt1"><div class=CFunction><blockquote><table border=0 cellspacing=0 cellpadding=0 class="Prototype prettyprint"><tr><td><table border=0 cellspacing=0 cellpadding=0><tr><td class=PBeforeParameters nowrap>Obol.prototype.parse = function(</td><td class=PParameter nowrap>qstr,</td></tr><tr><td></td><td class=PParameter nowrap>head</td><td class=PAfterParameters nowrap>)</td></tr></table></td></tr></table></blockquote></div></div><!--END_ND_TOOLTIPS-->
 
 
 

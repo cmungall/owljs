@@ -1,0 +1,279 @@
+0    [main] INFO  org.dllearner.configuration.spring.ComponentInitializationBeanPostProcessor  - Initializing Component "OWL File"... OK (0ms)
+138  [main] WARN  org.dllearner.configuration.spring.ComponentInitializationBeanPostProcessor  - Could not initialize component "fast instance checker"
+139  [main] ERROR org.dllearner.configuration.spring.DefaultApplicationContextBuilder  - There was a problem creating the bean named "alg1" - Check your configuration file and try again.
+140  [main] ERROR org.dllearner.cli.CLI  - An Error Occurred During Processing.  Terminating DL-Learner...and writing stacktrace to: log/error.log
+0    [main] INFO  org.dllearner.configuration.spring.ComponentInitializationBeanPostProcessor  - Initializing Component "OWL File"... OK (0ms)
+143  [main] WARN  org.dllearner.configuration.spring.ComponentInitializationBeanPostProcessor  - Could not initialize component "fast instance checker"
+144  [main] ERROR org.dllearner.configuration.spring.DefaultApplicationContextBuilder  - There was a problem creating the bean named "alg1" - Check your configuration file and try again.
+145  [main] ERROR org.dllearner.cli.CLI  - An Error Occurred During Processing.  Terminating DL-Learner...and writing stacktrace to: log/error.log
+0    [main] INFO  org.dllearner.configuration.spring.ComponentInitializationBeanPostProcessor  - Initializing Component "OWL File"... OK (0ms)
+652  [main] INFO  org.dllearner.configuration.spring.ComponentInitializationBeanPostProcessor  - Initializing Component "fast instance checker"... OK (651ms)
+660  [main] INFO  org.dllearner.configuration.spring.ComponentInitializationBeanPostProcessor  - Initializing Component "positive only learning problem"... OK (0ms)
+711  [main] INFO  org.dllearner.configuration.spring.ComponentInitializationBeanPostProcessor  - Initializing Component "CELOE"... OK (50ms)
+739  [main] INFO  org.dllearner.configuration.spring.ComponentInitializationBeanPostProcessor  - Initializing Component "PCELOE"... OK (12ms)
+741  [main] INFO  org.dllearner.cli.CLI  - Running algorithm instance "alg1"(CELOE)
+745  [main] INFO  org.dllearner.algorithms.celoe.CELOE  - more accurate (82.73%) class expression found: Thing
+760  [main] INFO  org.dllearner.algorithms.celoe.CELOE  - more accurate (88.73%) class expression found: http://purl.obolibrary.org/obo/MP_0003631
+760  [main] INFO  org.dllearner.algorithms.celoe.CELOE  - more accurate (93.30%) class expression found: http://purl.obolibrary.org/obo/MP_0002152
+761  [main] INFO  org.dllearner.algorithms.celoe.CELOE  - more accurate (100.00%) class expression found: http://purl.obolibrary.org/obo/MP_0000783
+10742 [main] INFO  org.dllearner.algorithms.celoe.CELOE  - Algorithm terminated successfully (time: 10s 0ms, 736522 descriptions tested, 315438 nodes in the search tree).
+
+10742 [main] INFO  org.dllearner.algorithms.celoe.CELOE  - number of retrievals: 512
+retrieval reasoning time: 2ms ( 0ms per retrieval)
+number of instance checks: 3944347 (0 multiple)
+instance check reasoning time: 2s 495ms ( 0ms per instance check)
+overall reasoning time: 2s 497ms
+
+10742 [main] INFO  org.dllearner.algorithms.celoe.CELOE  - solutions:
+1: http://purl.obolibrary.org/obo/MP_0008540 100.00%
+2: http://purl.obolibrary.org/obo/MP_0004262 100.00%
+3: http://purl.obolibrary.org/obo/MP_0000790 100.00%
+4: http://purl.obolibrary.org/obo/MP_0000788 100.00%
+5: http://purl.obolibrary.org/obo/MP_0000787 100.00%
+6: http://purl.obolibrary.org/obo/MP_0000783 100.00%
+7: http://purl.obolibrary.org/obo/MP_0002152 93.30%
+8: http://purl.obolibrary.org/obo/MP_0003632 88.73%
+9: http://purl.obolibrary.org/obo/MP_0003631 88.73%
+10: http://purl.obolibrary.org/obo/MP_0005386 85.36%
+
+10742 [main] INFO  org.dllearner.cli.CLI  - Running algorithm instance "alg2"(PCELOE)
+10747 [pool-1-thread-1] INFO  org.dllearner.algorithms.celoe.PCELOE  - more accurate (82.73%) class expression found: Thing
+10748 [pool-1-thread-1] INFO  org.dllearner.algorithms.celoe.PCELOE  - more accurate (88.73%) class expression found: http://purl.obolibrary.org/obo/MP_0003631
+10748 [pool-1-thread-1] INFO  org.dllearner.algorithms.celoe.PCELOE  - more accurate (100.00%) class expression found: http://purl.obolibrary.org/obo/MP_0000783
+20743 [main] INFO  org.dllearner.algorithms.celoe.PCELOE  - Algorithm terminated successfully (time: 10s 0ms, 918210 descriptions tested, 356441 nodes in the search tree).
+
+20743 [main] INFO  org.dllearner.algorithms.celoe.PCELOE  - number of retrievals: 1045
+retrieval reasoning time: 3ms ( 0ms per retrieval)
+number of instance checks: 8555258 (0 multiple)
+instance check reasoning time: 5s 331ms ( 0ms per instance check)
+overall reasoning time: 5s 335ms
+
+20743 [main] INFO  org.dllearner.algorithms.celoe.PCELOE  - solutions:
+1: http://purl.obolibrary.org/obo/MP_0008540 100.00%
+2: http://purl.obolibrary.org/obo/MP_0004262 100.00%
+3: http://purl.obolibrary.org/obo/MP_0000790 100.00%
+4: http://purl.obolibrary.org/obo/MP_0000788 100.00%
+5: http://purl.obolibrary.org/obo/MP_0000787 100.00%
+6: http://purl.obolibrary.org/obo/MP_0000783 100.00%
+7: http://purl.obolibrary.org/obo/MP_0000746 100.00%
+8: http://purl.obolibrary.org/obo/MP_0003632 88.73%
+9: http://purl.obolibrary.org/obo/MP_0003631 88.73%
+10: http://purl.obolibrary.org/obo/MP_0005386 85.36%
+
+0    [main] ERROR org.dllearner.configuration.spring.DefaultApplicationContextBuilder  - There was a problem initializing the components...shutting down.
+0    [main] ERROR org.dllearner.cli.CLI  - An Error Occurred During Processing.  Terminating DL-Learner...and writing stacktrace to: log/error.log
+0    [main] ERROR org.dllearner.configuration.spring.DefaultApplicationContextBuilder  - There was a problem initializing the components...shutting down.
+0    [main] ERROR org.dllearner.cli.CLI  - An Error Occurred During Processing.  Terminating DL-Learner...and writing stacktrace to: log/error.log
+0    [main] INFO  org.dllearner.configuration.spring.ComponentInitializationBeanPostProcessor  - Initializing Component "OWL File"... OK (0ms)
+634  [main] INFO  org.dllearner.configuration.spring.ComponentInitializationBeanPostProcessor  - Initializing Component "fast instance checker"... OK (632ms)
+645  [main] ERROR org.dllearner.configuration.spring.DefaultApplicationContextBuilder  - There was a problem creating the bean named "alg1" - Check your configuration file and try again.
+645  [main] ERROR org.dllearner.cli.CLI  - An Error Occurred During Processing.  Terminating DL-Learner...and writing stacktrace to: log/error.log
+0    [main] INFO  org.dllearner.configuration.spring.ComponentInitializationBeanPostProcessor  - Initializing Component "OWL File"... OK (0ms)
+638  [main] INFO  org.dllearner.configuration.spring.ComponentInitializationBeanPostProcessor  - Initializing Component "fast instance checker"... OK (636ms)
+695  [main] INFO  org.dllearner.configuration.spring.ComponentInitializationBeanPostProcessor  - Initializing Component "ClassLearningProblem"... OK (32ms)
+724  [main] INFO  org.dllearner.configuration.spring.ComponentInitializationBeanPostProcessor  - Initializing Component "CELOE"... OK (28ms)
+753  [main] INFO  org.dllearner.configuration.spring.ComponentInitializationBeanPostProcessor  - Initializing Component "PCELOE"... OK (13ms)
+755  [main] INFO  org.dllearner.cli.CLI  - Running algorithm instance "alg1"(CELOE)
+785  [main] INFO  org.dllearner.algorithms.celoe.CELOE  - more accurate (92.86%) class expression found: http://purl.obolibrary.org/obo/MP_0000001
+996  [main] INFO  org.dllearner.algorithms.celoe.CELOE  - more accurate (100.00%) class expression found: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0005657))
+10755 [main] INFO  org.dllearner.algorithms.celoe.CELOE  - Algorithm terminated successfully (time: 10s 0ms, 709958 descriptions tested, 35041 nodes in the search tree).
+
+10755 [main] INFO  org.dllearner.algorithms.celoe.CELOE  - number of retrievals: 6
+retrieval reasoning time: 0ms ( 0ms per retrieval)
+number of instance checks: 4969790 (0 multiple)
+instance check reasoning time: 3s 216ms ( 0ms per instance check)
+(complex) subsumption checks: 45 (0 multiple)
+subsumption reasoning time: 216ms ( 4ms per subsumption check)
+overall reasoning time: 3s 478ms
+
+10756 [main] INFO  org.dllearner.algorithms.celoe.CELOE  - solutions:
+1: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0008932)) 100.00%
+2: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0005657)) 100.00%
+3: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0003091)) 100.00%
+4: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0002950)) 100.00%
+5: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0002092)) 100.00%
+6: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0002085)) 100.00%
+7: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0002080)) 100.00%
+8: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0001688)) 100.00%
+9: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0001286)) 100.00%
+10: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0000929)) 100.00%
+
+10756 [main] INFO  org.dllearner.cli.CLI  - Running algorithm instance "alg2"(PCELOE)
+10771 [pool-1-thread-1] INFO  org.dllearner.algorithms.celoe.PCELOE  - more accurate (92.86%) class expression found: http://purl.obolibrary.org/obo/MP_0000001
+10856 [pool-1-thread-2] INFO  org.dllearner.algorithms.celoe.PCELOE  - more accurate (100.00%) class expression found: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0005657))
+20757 [main] INFO  org.dllearner.algorithms.celoe.PCELOE  - Algorithm terminated successfully (time: 10s 0ms, 710527 descriptions tested, 35055 nodes in the search tree).
+
+20757 [main] INFO  org.dllearner.algorithms.celoe.PCELOE  - number of retrievals: 8
+retrieval reasoning time: 0ms ( 0ms per retrieval)
+number of instance checks: 9943570 (0 multiple)
+instance check reasoning time: 6s 408ms ( 0ms per instance check)
+(complex) subsumption checks: 90 (0 multiple)
+subsumption reasoning time: 336ms ( 3ms per subsumption check)
+overall reasoning time: 6s 809ms
+
+20757 [main] INFO  org.dllearner.algorithms.celoe.PCELOE  - solutions:
+1: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0008932)) 100.00%
+2: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0005657)) 100.00%
+3: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0003091)) 100.00%
+4: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0002950)) 100.00%
+5: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0002092)) 100.00%
+6: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0002085)) 100.00%
+7: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0002080)) 100.00%
+8: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0001688)) 100.00%
+9: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0001286)) 100.00%
+10: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0000929)) 100.00%
+
+0    [main] INFO  org.dllearner.configuration.spring.ComponentInitializationBeanPostProcessor  - Initializing Component "OWL File"... OK (0ms)
+874  [main] INFO  org.dllearner.configuration.spring.ComponentInitializationBeanPostProcessor  - Initializing Component "fast instance checker"... OK (870ms)
+952  [main] INFO  org.dllearner.configuration.spring.ComponentInitializationBeanPostProcessor  - Initializing Component "ClassLearningProblem"... OK (40ms)
+984  [main] INFO  org.dllearner.configuration.spring.ComponentInitializationBeanPostProcessor  - Initializing Component "CELOE"... OK (31ms)
+1010 [main] INFO  org.dllearner.configuration.spring.ComponentInitializationBeanPostProcessor  - Initializing Component "PCELOE"... OK (6ms)
+1013 [main] INFO  org.dllearner.cli.CLI  - Running algorithm instance "alg1"(CELOE)
+1045 [main] INFO  org.dllearner.algorithms.celoe.CELOE  - more accurate (92.86%) class expression found: http://purl.obolibrary.org/obo/MP_0000001
+1315 [main] INFO  org.dllearner.algorithms.celoe.CELOE  - more accurate (100.00%) class expression found: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0005657))
+11014 [main] INFO  org.dllearner.algorithms.celoe.CELOE  - Algorithm terminated successfully (time: 10s 0ms, 566137 descriptions tested, 29910 nodes in the search tree).
+
+11014 [main] INFO  org.dllearner.algorithms.celoe.CELOE  - number of retrievals: 6
+retrieval reasoning time: 0ms ( 0ms per retrieval)
+number of instance checks: 3963043 (0 multiple)
+instance check reasoning time: 2s 986ms ( 0ms per instance check)
+(complex) subsumption checks: 45 (0 multiple)
+subsumption reasoning time: 272ms ( 6ms per subsumption check)
+overall reasoning time: 3s 305ms
+
+11014 [main] INFO  org.dllearner.algorithms.celoe.CELOE  - solutions:
+1: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0008932)) 100.00%
+2: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0005657)) 100.00%
+3: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0003091)) 100.00%
+4: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0002950)) 100.00%
+5: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0002092)) 100.00%
+6: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0002085)) 100.00%
+7: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0002080)) 100.00%
+8: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0001688)) 100.00%
+9: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0001286)) 100.00%
+10: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0000929)) 100.00%
+
+11014 [main] INFO  org.dllearner.cli.CLI  - Running algorithm instance "alg2"(PCELOE)
+11030 [pool-1-thread-1] INFO  org.dllearner.algorithms.celoe.PCELOE  - more accurate (92.86%) class expression found: http://purl.obolibrary.org/obo/MP_0000001
+11084 [pool-1-thread-1] INFO  org.dllearner.algorithms.celoe.PCELOE  - more accurate (100.00%) class expression found: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0003720))
+21027 [main] INFO  org.dllearner.algorithms.celoe.PCELOE  - Algorithm terminated successfully (time: 10s 11ms, 455079 descriptions tested, 24730 nodes in the search tree).
+
+21027 [main] INFO  org.dllearner.algorithms.celoe.PCELOE  - number of retrievals: 8
+retrieval reasoning time: 0ms ( 0ms per retrieval)
+number of instance checks: 7148687 (0 multiple)
+instance check reasoning time: 6s 228ms ( 0ms per instance check)
+(complex) subsumption checks: 92 (0 multiple)
+subsumption reasoning time: 415ms ( 4ms per subsumption check)
+overall reasoning time: 6s 711ms
+
+21027 [main] INFO  org.dllearner.algorithms.celoe.PCELOE  - solutions:
+1: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0008932)) 100.00%
+2: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0005657)) 100.00%
+3: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0003720)) 100.00%
+4: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0003091)) 100.00%
+5: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0002950)) 100.00%
+6: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0002151)) 100.00%
+7: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0002080)) 100.00%
+8: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0001688)) 100.00%
+9: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0001286)) 100.00%
+10: (http://purl.obolibrary.org/obo/MP_0000001 and (not http://purl.obolibrary.org/obo/MP_0000929)) 100.00%
+
+0    [main] INFO  org.dllearner.configuration.spring.ComponentInitializationBeanPostProcessor  - Initializing Component "OWL File"... OK (0ms)
+819  [main] INFO  org.dllearner.configuration.spring.ComponentInitializationBeanPostProcessor  - Initializing Component "fast instance checker"... OK (817ms)
+894  [main] INFO  org.dllearner.configuration.spring.ComponentInitializationBeanPostProcessor  - Initializing Component "ClassLearningProblem"... OK (47ms)
+926  [main] INFO  org.dllearner.configuration.spring.ComponentInitializationBeanPostProcessor  - Initializing Component "CELOE"... OK (31ms)
+964  [main] INFO  org.dllearner.configuration.spring.ComponentInitializationBeanPostProcessor  - Initializing Component "PCELOE"... OK (16ms)
+968  [main] INFO  org.dllearner.cli.CLI  - Running algorithm instance "alg1"(CELOE)
+1002 [main] INFO  org.dllearner.algorithms.celoe.CELOE  - more accurate (91.67%) class expression found: http://purl.obolibrary.org/obo/MP_0004924
+1475 [main] INFO  org.dllearner.algorithms.celoe.CELOE  - more accurate (100.00%) class expression found: (http://purl.obolibrary.org/obo/MP_0004924 and (not http://purl.obolibrary.org/obo/MP_0002566))
+10971 [main] INFO  org.dllearner.algorithms.celoe.CELOE  - Algorithm terminated successfully (time: 10s 2ms, 262316 descriptions tested, 51193 nodes in the search tree).
+
+10972 [main] INFO  org.dllearner.algorithms.celoe.CELOE  - number of retrievals: 10
+retrieval reasoning time: 0ms ( 0ms per retrieval)
+number of instance checks: 1573998 (0 multiple)
+instance check reasoning time: 1s 215ms ( 0ms per instance check)
+(complex) subsumption checks: 64 (0 multiple)
+subsumption reasoning time: 391ms ( 6ms per subsumption check)
+overall reasoning time: 1s 680ms
+
+10972 [main] INFO  org.dllearner.algorithms.celoe.CELOE  - solutions:
+1: (http://purl.obolibrary.org/obo/MP_0004924 and (not http://purl.obolibrary.org/obo/MP_0002566)) 100.00%
+2: (http://purl.obolibrary.org/obo/MP_0004924 and (not http://purl.obolibrary.org/obo/MP_0002286)) 100.00%
+3: (http://purl.obolibrary.org/obo/MP_0004924 and (not http://purl.obolibrary.org/obo/MP_0001927)) 100.00%
+4: (http://purl.obolibrary.org/obo/MP_0004924 and (not http://purl.obolibrary.org/obo/MP_0001926)) 100.00%
+5: (http://purl.obolibrary.org/obo/MP_0004924 and (not http://purl.obolibrary.org/obo/MP_0001925)) 100.00%
+6: (http://purl.obolibrary.org/obo/MP_0004924 and (not http://purl.obolibrary.org/obo/MP_0001147)) 100.00%
+7: (http://purl.obolibrary.org/obo/MP_0004924 and (not http://purl.obolibrary.org/obo/MP_0001127)) 100.00%
+8: (http://purl.obolibrary.org/obo/MP_0004924 and (not http://purl.obolibrary.org/obo/MP_0000771)) 100.00%
+9: (http://purl.obolibrary.org/obo/MP_0004924 and (not http://purl.obolibrary.org/obo/MP_0000435)) 100.00%
+10: (http://purl.obolibrary.org/obo/MP_0004924 and (not http://purl.obolibrary.org/obo/MP_0000018)) 100.00%
+
+10972 [main] INFO  org.dllearner.cli.CLI  - Running algorithm instance "alg2"(PCELOE)
+10987 [pool-1-thread-1] INFO  org.dllearner.algorithms.celoe.PCELOE  - more accurate (91.67%) class expression found: http://purl.obolibrary.org/obo/MP_0004924
+11178 [pool-1-thread-1] INFO  org.dllearner.algorithms.celoe.PCELOE  - more accurate (100.00%) class expression found: (http://purl.obolibrary.org/obo/MP_0004924 and (not http://purl.obolibrary.org/obo/MP_0002566))
+20975 [main] INFO  org.dllearner.algorithms.celoe.PCELOE  - Algorithm terminated successfully (time: 10s 2ms, 262476 descriptions tested, 51193 nodes in the search tree).
+
+20975 [main] INFO  org.dllearner.algorithms.celoe.PCELOE  - number of retrievals: 14
+retrieval reasoning time: 0ms ( 0ms per retrieval)
+number of instance checks: 3148956 (0 multiple)
+instance check reasoning time: 2s 271ms ( 0ms per instance check)
+(complex) subsumption checks: 126 (0 multiple)
+subsumption reasoning time: 570ms ( 4ms per subsumption check)
+overall reasoning time: 2s 943ms
+
+20976 [main] INFO  org.dllearner.algorithms.celoe.PCELOE  - solutions:
+1: (http://purl.obolibrary.org/obo/MP_0004924 and (not http://purl.obolibrary.org/obo/MP_0002566)) 100.00%
+2: (http://purl.obolibrary.org/obo/MP_0004924 and (not http://purl.obolibrary.org/obo/MP_0002286)) 100.00%
+3: (http://purl.obolibrary.org/obo/MP_0004924 and (not http://purl.obolibrary.org/obo/MP_0001927)) 100.00%
+4: (http://purl.obolibrary.org/obo/MP_0004924 and (not http://purl.obolibrary.org/obo/MP_0001926)) 100.00%
+5: (http://purl.obolibrary.org/obo/MP_0004924 and (not http://purl.obolibrary.org/obo/MP_0001925)) 100.00%
+6: (http://purl.obolibrary.org/obo/MP_0004924 and (not http://purl.obolibrary.org/obo/MP_0001147)) 100.00%
+7: (http://purl.obolibrary.org/obo/MP_0004924 and (not http://purl.obolibrary.org/obo/MP_0001127)) 100.00%
+8: (http://purl.obolibrary.org/obo/MP_0004924 and (not http://purl.obolibrary.org/obo/MP_0000771)) 100.00%
+9: (http://purl.obolibrary.org/obo/MP_0004924 and (not http://purl.obolibrary.org/obo/MP_0000435)) 100.00%
+10: (http://purl.obolibrary.org/obo/MP_0004924 and (not http://purl.obolibrary.org/obo/MP_0000018)) 100.00%
+
+0    [main] INFO  org.dllearner.configuration.spring.ComponentInitializationBeanPostProcessor  - Initializing Component "OWL File"... OK (0ms)
+832  [main] INFO  org.dllearner.configuration.spring.ComponentInitializationBeanPostProcessor  - Initializing Component "fast instance checker"... OK (830ms)
+904  [main] INFO  org.dllearner.configuration.spring.ComponentInitializationBeanPostProcessor  - Initializing Component "ClassLearningProblem"... OK (45ms)
+954  [main] INFO  org.dllearner.configuration.spring.ComponentInitializationBeanPostProcessor  - Initializing Component "CELOE"... OK (49ms)
+1014 [main] INFO  org.dllearner.configuration.spring.ComponentInitializationBeanPostProcessor  - Initializing Component "PCELOE"... OK (13ms)
+1017 [main] INFO  org.dllearner.cli.CLI  - Running algorithm instance "alg1"(CELOE)
+1050 [main] INFO  org.dllearner.algorithms.celoe.CELOE  - more accurate (100.00%) class expression found: (http://purl.obolibrary.org/obo/MP_0000801 and http://purl.obolibrary.org/obo/MP_0004166)
+11046 [main] INFO  org.dllearner.algorithms.celoe.CELOE  - Algorithm terminated successfully (time: 10s 28ms, 89139 descriptions tested, 79135 nodes in the search tree).
+
+11046 [main] INFO  org.dllearner.algorithms.celoe.CELOE  - number of retrievals: 221
+retrieval reasoning time: 2ms ( 0ms per retrieval)
+number of instance checks: 89151 (0 multiple)
+instance check reasoning time: 179ms ( 0ms per instance check)
+(complex) subsumption checks: 65 (0 multiple)
+subsumption reasoning time: 296ms ( 4ms per subsumption check)
+overall reasoning time: 522ms
+
+11047 [main] INFO  org.dllearner.algorithms.celoe.CELOE  - solutions:
+1: (http://purl.obolibrary.org/obo/MP_0000801 and http://purl.obolibrary.org/obo/MP_0004166) 100.00%
+2: (http://purl.obolibrary.org/obo/MP_0000801 and http://purl.obolibrary.org/obo/MP_0004166 and http://purl.obolibrary.org/obo/MP_0010771) 100.00%
+3: (http://purl.obolibrary.org/obo/MP_0000801 and http://purl.obolibrary.org/obo/MP_0004166 and http://purl.obolibrary.org/obo/MP_0010770) 100.00%
+4: (http://purl.obolibrary.org/obo/MP_0000801 and http://purl.obolibrary.org/obo/MP_0004166 and http://purl.obolibrary.org/obo/MP_0010769) 100.00%
+5: (http://purl.obolibrary.org/obo/MP_0000801 and http://purl.obolibrary.org/obo/MP_0004166 and http://purl.obolibrary.org/obo/MP_0010768) 100.00%
+6: (http://purl.obolibrary.org/obo/MP_0000801 and http://purl.obolibrary.org/obo/MP_0004166 and http://purl.obolibrary.org/obo/MP_0005386) 100.00%
+7: (http://purl.obolibrary.org/obo/MP_0000801 and http://purl.obolibrary.org/obo/MP_0004166 and http://purl.obolibrary.org/obo/MP_0005384) 100.00%
+8: (http://purl.obolibrary.org/obo/MP_0000801 and http://purl.obolibrary.org/obo/MP_0004166 and http://purl.obolibrary.org/obo/MP_0005380) 100.00%
+9: (http://purl.obolibrary.org/obo/MP_0000801 and http://purl.obolibrary.org/obo/MP_0004166 and http://purl.obolibrary.org/obo/MP_0005378) 100.00%
+10: (http://purl.obolibrary.org/obo/MP_0000801 and http://purl.obolibrary.org/obo/MP_0002083 and http://purl.obolibrary.org/obo/MP_0004166) 100.00%
+
+11047 [main] INFO  org.dllearner.cli.CLI  - Running algorithm instance "alg2"(PCELOE)
+11070 [pool-1-thread-1] INFO  org.dllearner.algorithms.celoe.PCELOE  - more accurate (100.00%) class expression found: (http://purl.obolibrary.org/obo/MP_0000801 and http://purl.obolibrary.org/obo/MP_0004166)
+21047 [main] INFO  org.dllearner.algorithms.celoe.PCELOE  - Algorithm terminated successfully (time: 10s 0ms, 1 descriptions tested, 1 nodes in the search tree).
+
+21047 [main] INFO  org.dllearner.algorithms.celoe.PCELOE  - number of retrievals: 221
+retrieval reasoning time: 2ms ( 0ms per retrieval)
+number of instance checks: 89153 (0 multiple)
+instance check reasoning time: 179ms ( 0ms per instance check)
+(complex) subsumption checks: 69 (0 multiple)
+subsumption reasoning time: 311ms ( 4ms per subsumption check)
+overall reasoning time: 539ms
+
+21048 [main] INFO  org.dllearner.algorithms.celoe.PCELOE  - solutions:
+1: (http://purl.obolibrary.org/obo/MP_0000801 and http://purl.obolibrary.org/obo/MP_0004166) 100.00%
+
