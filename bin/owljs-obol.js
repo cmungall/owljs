@@ -10,10 +10,15 @@ function main(args) {
 
     parser.addOption('h', 'help', null, 'Display help');
     parser.addOption('q', 'query', 'String', 'sentence to parse');
-    parser.addOption('r', 'rootClass', 'Class', 'root class to restrict search space');
-    parser.addOption('m', 'module', 'Module', 'module in owl/obol to load. E.g. phenotype');
-    parser.addOption('o', 'outputFile', 'File', 'output file (defaults to stdout)');
-    parser.addOption('t', 'toOutputFormat', 'OWLOntologyFormat', 'output format (defaults to RDFXML)');
+    parser.addOption('r', 'rootClass', 'Class', 'root class to restrict search space. Can be IRI or name. E.g. "neuron" or "regulation of biological process"');
+    parser.addOption('m', 'module', 'Module', 'module in owl/obol to load. E.g. phenotype; E.g. anatomy; E.g. bp/involvedIn');
+    parser.addOption('o', 'outputFile', 'File', 'output OWL file where generated axioms are stored (defaults to stdout)');
+    parser.addOption('t', 'toOutputFormat', 'OWLOntologyFormat', 'output format for generated axioms (defaults to RDFXML)');
+    parser.addOption('F', 'forceGenerate', 'Variables', 'forces generation of classes for the given variable name or names (comma-separated). E.g. "part,whole"');
+    parser.addOption('T', 'testExpressions', null, 'If set, all generated expressions are compared to parsed class using reasoner');
+    parser.addOption('R', 'rule', 'RuleName', 'Name of rule to use. Defaults to all (loaded) rules');
+    parser.addOption('u', 'undefinedOnly', null, 'If set, defined classes are not parsed');
+    parser.addOption('l', 'load', 'File', 'Evals file contents');
 
     var options = parser.parse(args);
 
@@ -48,11 +53,23 @@ function main(args) {
     repl.owlinit(owl);
     var obol = new Obol(owl, repl.o);
 
+    obol.useOboVocab(); // TODO - make configurable
+    owl.config.isCompareClasses = options.testExpressions;
+
+    if (options.forceGenerate != null) {
+        options.forceGenerate.split(",").forEach( function(x) { obol.generate(x) });
+    }
+
+    if (options.undefinedOnly) {
+        obol.setIgnoreDefinedClasses(options.undefinedOnly);
+    }
+    var ruleName = options.rule;
+
     var results;
     if (options.query != null) {
         var str = options.query;
         console.log("Parsing: "+str);
-        results = obol.parse(str, null, repl.o);
+        results = obol.parse(str, ruleName, repl.o);
         repl.pp(results);
     }
     else {
@@ -66,22 +83,27 @@ function main(args) {
         }
 
         var axioms = [];
-        console.log("Parsing, #classes = "+clist.length);
+        console.log("Parsing, #classes = "+clist.length+" Rule: "+(ruleName == null ? "ALL" : ruleName));
         for (var k in clist) {
             var c = clist[k];
-            //var label = owl.getLabel(c); // TODO - other APs
-            results = obol.parse(c, null, repl.o);
+            results = obol.parseClass(c, ruleName);
+            repl.pp(results);
             if (results.length > 0) {
-                var cx = results[0];
-                var ax = owl.equivalentClasses(c, cx);
-                axioms.push( ax );
-                repl.pp("GEN_AX=");
-                repl.pp([ax]);
-                // TODO - other results
+                if (results.length > 1) {
+                    console.warn("Ignoring "+(results.length-1)+" other results");
+                }
+                var result = results[0]; // sorted
+                repl.pp(result);
+                if (result.axiom != null) {
+                    axioms.push( result.axiom );
+                }
+                if (result.extraAxioms != null) {
+                    axioms = axioms.concat( result.extraAxioms );
+                }                
             }
         }
         console.log("Parsed, #classes = "+clist.length);
-        owl.saveAxioms(axioms, options.output);
+        owl.saveAxioms(axioms, options.outputFile);
     }
 }
 
