@@ -34,19 +34,19 @@ function init() {
 exports.testLabelParse = function() {
     init();
     owl.add(owl.labelAssertion(caPyramidalCell, "hippocampus pyramidal cell"));
-    testParse("whole part", 126);
+    testParse("whole part", 202);
 }
 
 exports.testSynParse = function() {
     init();
     obovocab.addSynonym(owl, caPyramidalCell, null, "cornu ammonis pyramidal neuron");
-    testParse("whole part", 85);
+    testParse("whole part", 120);
 }
 
 exports.testDoubleSynParse = function() {
     init();
     obovocab.addSynonym(owl, caPyramidalCell, null, "pyramidal neuron of cornu ammonis");
-    testParse("part of whole", 94);
+    testParse("part of whole", 132);
 }
 
 exports.testGenerateLastToken = function() {

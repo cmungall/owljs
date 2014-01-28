@@ -1,4 +1,6 @@
-include("owl/repl");
+// we use include() rather than require(), deliberately polluting our namespace for convenience
+include("owl/repl"); 
+
 var Parser = require('ringo/args').Parser;
 var system = require('system');
 var fs = require('fs');
@@ -22,12 +24,16 @@ function main(args) {
     var options = parser.parse(args);
 
     if (options.help) {
-        print("Usage: owljs-grep OPTIONS [ARGUMENTS] [OWLFILE...]\n");
-        print("Starts a repl. See repl docs for more details.");
+        print("Usage: owljs-repl OPTIONS [ARGUMENTS] [OWLFILE...]\n");
+        print("Starts an interactive Read-Eval-Print-Loop.");
         print("\nOptions:");
 	print(parser.help());
         print("\nExample:");
         print("owljs-repl -i bootcl.js cl-edit.owl");
+        print("\nVariables:");
+        print(" - o : lookup table keyed by safe-labels, indexing OWL objects");
+        print(" - owl : an OWL object");
+        print(" - q : a DLMatch object");
         print("\nDocumentation:");
         print("See https://github.com/cmungall/owl.js/blob/master/README-REPL.md");
 	system.exit('-1');

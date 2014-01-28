@@ -19,6 +19,9 @@ function main(args) {
     parser.addOption('R', 'rule', 'RuleName', 'Name of rule to use. Defaults to all (loaded) rules');
     parser.addOption('u', 'undefinedOnly', null, 'If set, defined classes are not parsed');
     parser.addOption('l', 'load', 'File', 'Evals file contents');
+    parser.addOption('v', 'verbosity', 'Number', 'sets verbosity. >0 logs');
+    parser.addOption('S', 'subsumersOnly', null, 'If set, the generated class expression must subsume the query class');
+    parser.addOption('O', 'oboFile', 'File', 'OBO file to write results to (MAY BE DEPRECATED IN FUTURE)');
 
     var options = parser.parse(args);
 
@@ -53,8 +56,11 @@ function main(args) {
     repl.owlinit(owl);
     var obol = new Obol(owl, repl.o);
 
+    obol.logLevel = options.verbosity;
+
     obol.useOboVocab(); // TODO - make configurable
     owl.config.isCompareClasses = options.testExpressions;
+    owl.config.isSubsumersOnly = options.subsumersOnly;
 
     if (options.forceGenerate != null) {
         options.forceGenerate.split(",").forEach( function(x) { obol.generate(x) });
@@ -66,11 +72,13 @@ function main(args) {
     var ruleName = options.rule;
 
     var results;
+    var filteredResults = [];
     if (options.query != null) {
         var str = options.query;
         console.log("Parsing: "+str);
         results = obol.parse(str, ruleName, repl.o);
         repl.pp(results);
+        filteredResults = results;
     }
     else {
         var root = options.root;
@@ -84,11 +92,16 @@ function main(args) {
 
         var axioms = [];
         console.log("Parsing, #classes = "+clist.length+" Rule: "+(ruleName == null ? "ALL" : ruleName));
+        var n = 0;
         for (var k in clist) {
             var c = clist[k];
+            if (n % 100 == 0) {
+                console.log("Parsed "+n+"/"+clist.length);
+            }
+            n++;
             results = obol.parseClass(c, ruleName);
-            repl.pp(results);
             if (results.length > 0) {
+                repl.pp(results);
                 if (results.length > 1) {
                     console.warn("Ignoring "+(results.length-1)+" other results");
                 }
@@ -100,10 +113,16 @@ function main(args) {
                 if (result.extraAxioms != null) {
                     axioms = axioms.concat( result.extraAxioms );
                 }                
+                filteredResults.push(result);
+
             }
         }
         console.log("Parsed, #classes = "+clist.length);
         owl.saveAxioms(axioms, options.outputFile);
+
+        if (options.oboFile != null) {
+            obol.writeOboFile(options.oboFile, results);
+        }
     }
 }
 
