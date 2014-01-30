@@ -34,6 +34,7 @@ function main(args) {
     }
 
     var owl = new OWL();
+    owl.addCatalog();
 
     if (options.toOutputFormat != null) {
         console.log("Setting format to "+options.toOutputFormat);
@@ -71,7 +72,7 @@ function main(args) {
             repl.owlinit(owl);
             for (var k in filteredObjects) {
                 var obj = filteredObjects[k];
-                print(repl.render(owl.toFrame(obj)));
+                print(repl.render(owl.getFrame(obj)));
             }        
         }
         else {

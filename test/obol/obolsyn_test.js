@@ -24,7 +24,6 @@ function init() {
     ca = owl.declareClass(obovocab.OBO + "TEST_0000002");
     owl.add(owl.labelAssertion(ca, "hippocampus"));
     obovocab.addSynonym(owl, ca, obovocab.hasRelatedSynonym, "Ammon's horn");
-    obovocab.addSynonym(owl, ca, obovocab.hasRelatedSynonym, "Ammon's horn");
     obovocab.addSynonym(owl, ca, obovocab.hasRelatedSynonym, "cornu ammonis");
     obovocab.addSynonym(owl, ca, obovocab.hasBroadSynonym, "hippocampal formation");
 
@@ -47,6 +46,37 @@ exports.testDoubleSynParse = function() {
     init();
     obovocab.addSynonym(owl, caPyramidalCell, null, "pyramidal neuron of cornu ammonis");
     testParse("part of whole", 132);
+}
+
+exports.testIgnoreCase = function() {
+    init();
+    obovocab.addSynonym(owl, caPyramidalCell, null, "pyramidal neuron of ammon's horn");
+    testParse("part of whole", 130);
+}
+
+exports.testOboVocab = function() {
+    init();
+    obovocab.addSynonym(owl, caPyramidalCell, null, "pyramidal neuron of cornu ammonis");
+    obol.useOboVocab();    
+    testParse("part of whole", 132);
+}
+
+exports.testRestrictSynonyms = function() {
+    init();
+    obovocab.addSynonym(owl, caPyramidalCell, null, "pyramidal neuron of cornu ammonis");
+    obol.useOboVocab();    
+    obol.restrictProperties( [ obovocab.hasExactSynonym(owl) ] );
+    var matches = obol.parseClass(caPyramidalCell);
+    assert.equal(matches.length, 0);
+}
+
+exports.testRestrictSynonyms2 = function() {
+    init();
+    obovocab.addSynonym(owl, caPyramidalCell, null, "pyramidal neuron of cornu ammonis");
+    obol.useOboVocab();    
+    obol.restrictProperties( [ obovocab.hasRelatedSynonym(owl) ] );
+    var matches = obol.parseClass(caPyramidalCell);
+    assert.equal(matches.length, 1);
 }
 
 exports.testGenerateLastToken = function() {

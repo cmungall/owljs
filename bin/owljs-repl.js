@@ -7,8 +7,10 @@ var fs = require('fs');
 var {OWL} = require("owl");
 var {OWLFrame} = require("owl/owlframe");
 var {DLMatch} = require("owl/dlmatch");
+var {Obol} = require("owl/obol");
 var owl;
 var q;
+var obol;
 
 importPackage(Packages.org.semanticweb.owlapi.model);
 
@@ -43,6 +45,7 @@ function main(args) {
 
     args.forEach(function(fn) { owl.loadFile(fn) } );
     q = new DLMatch(owl);
+    obol = new Obol(owl);
 
     owlinit(owl);
     if (options.evaluate != null) {

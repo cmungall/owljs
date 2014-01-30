@@ -19,9 +19,11 @@ function main(args) {
     parser.addOption('R', 'rule', 'RuleName', 'Name of rule to use. Defaults to all (loaded) rules');
     parser.addOption('u', 'undefinedOnly', null, 'If set, defined classes are not parsed');
     parser.addOption('l', 'load', 'File', 'Evals file contents');
+    parser.addOption('p', 'properties', 'Properties', 'Comma-delimited list of properties to use');
     parser.addOption('v', 'verbosity', 'Number', 'sets verbosity. >0 logs');
     parser.addOption('S', 'subsumersOnly', null, 'If set, the generated class expression must subsume the query class');
     parser.addOption('O', 'oboFile', 'File', 'OBO file to write results to (MAY BE DEPRECATED IN FUTURE)');
+    parser.addOption('C', 'configFile', 'File', 'js config file');
 
     var options = parser.parse(args);
 
@@ -32,10 +34,18 @@ function main(args) {
 	print(parser.help());
         print("\nExample:");
         print("owljs-obol -m anatomy -r neuron cl.owl");
+        print("\nExample:");
+        print("# parses undefined classes from GO using precise synonyms, using involved_in pattern, testing if object is subsumed by expression");
+        print("owljs-obol -p label,has_exact_synonym -T -v 1 -u -o xp.owl -t ofn -m bp/involvedIn -u gene_ontology_write.obo");
 	system.exit('-1');
     }
 
     var owl = new OWL();
+    owl.addCatalog();
+    if (options.configFile != null) {
+        console.log("Loading: " + options.configFile);
+        owl.loadConfig(options.configFile);
+    }
 
     if (options.toOutputFormat != null) {
         console.log("Setting format to "+options.toOutputFormat);
@@ -49,6 +59,9 @@ function main(args) {
     }
 
     if (options.module != null) {
+        if (options.module.indexOf(".") == 0) {
+            require(options.module);
+        }
         require("owl/obol/" + options.module);
     }
 
@@ -59,6 +72,19 @@ function main(args) {
     obol.logLevel = options.verbosity;
 
     obol.useOboVocab(); // TODO - make configurable
+
+    if (options.properties != null) {
+        var plabels = options.properties.split(",");
+        var ps = 
+            plabels.map( function(pl) {
+                if (pl == 'label') {
+                    return owl.labelProperty();
+                }
+                return owl.find(pl);
+            });
+        obol.restrictProperties(ps);
+    }
+
     owl.config.isCompareClasses = options.testExpressions;
     owl.config.isSubsumersOnly = options.subsumersOnly;
 
@@ -81,13 +107,13 @@ function main(args) {
         filteredResults = results;
     }
     else {
-        var root = options.root;
+        var root = options.rootClass;
         var clist;
         if (root == null) {
             clist = owl.getClasses();
         }
         else {
-            clist = owl.getSubClasses(owl.find(root));
+            clist = owl.getInferredSubClasses(owl.find(root), false, true);
         }
 
         var axioms = [];
