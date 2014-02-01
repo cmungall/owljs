@@ -24,6 +24,7 @@ function main(args) {
     parser.addOption('S', 'subsumersOnly', null, 'If set, the generated class expression must subsume the query class');
     parser.addOption('O', 'oboFile', 'File', 'OBO file to write results to (MAY BE DEPRECATED IN FUTURE)');
     parser.addOption('C', 'configFile', 'File', 'js config file');
+    parser.addOption('Z', 'noImports', null, 'only use core ontology for class list');
 
     var options = parser.parse(args);
 
@@ -32,11 +33,14 @@ function main(args) {
         print("Parses class labels and annotations using a grammar pattern");
         print("\nOptions:");
 	print(parser.help());
-        print("\nExample:");
-        print("owljs-obol -m anatomy -r neuron cl.owl");
-        print("\nExample:");
-        print("# parses undefined classes from GO using precise synonyms, using involved_in pattern, testing if object is subsumed by expression");
-        print("owljs-obol -p label,has_exact_synonym -T -v 1 -u -o xp.owl -t ofn -m bp/involvedIn -u gene_ontology_write.obo");
+        print("\n\n\
+Example:\n\
+owljs-obol -m anatomy -r neuron cl.owl\n\
+\n\
+Example:\n\
+# parses undefined classes from GO using precise synonyms, using involved_in pattern, testing if object is subsumed by expression\n\
+owljs-obol -p label,has_exact_synonym -T -v 1 -u -o xp.owl -t ofn -m bp/involvedIn -u gene_ontology_write.obo\n\
+");
 	system.exit('-1');
     }
 
@@ -111,9 +115,17 @@ function main(args) {
         var clist;
         if (root == null) {
             clist = owl.getClasses();
+            console.log("No root; # of classes: "+clist.length);
         }
         else {
             clist = owl.getInferredSubClasses(owl.find(root), false, true);
+            console.log("# of subtypes: "+clist.length);
+        }
+
+        if (options.noImports) {
+            // only use root ontology
+            clist = clist.filter( function(c) { return owl.getOntology().getClassesInSignature(false).contains(c) } );
+            console.log("# of subtypes (in core ontology): "+clist.length);
         }
 
         var axioms = [];

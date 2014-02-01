@@ -31,6 +31,11 @@ Axioms can be directly added as follows:
 
     add( subClassOf(o.neuron, someValuesFrom(o.part_of, o.nervous_system)) )
 
+The "add" function is optional if you run in add-mode:
+
+   addMode(true)
+   subClassOf(o.neuron, someValuesFrom(o.part_of, o.nervous_system))
+
 Note that autocomplete is enabled, so if you type:
 
     o.nerv[TAB]
