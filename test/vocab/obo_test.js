@@ -4,7 +4,6 @@ var assert = require("assert");
 
 var owl;
 
-
 exports.testOps = function() {
     owl = new OWL();
 

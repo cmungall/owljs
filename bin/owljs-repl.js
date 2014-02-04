@@ -11,6 +11,7 @@ var {Obol} = require("owl/obol");
 var owl;
 var q;
 var obol;
+var options;
 
 importPackage(Packages.org.semanticweb.owlapi.model);
 
@@ -22,8 +23,9 @@ function main(args) {
     parser.addOption('i', 'include', 'File', 'loads js. Argument can be a path to a js file or a module name');
     parser.addOption('e', 'evaluate', 'Code', 'evals js code block');
     parser.addOption('l', 'load', 'File', 'Evals file contents');
+    parser.addOption('x', 'exit', null, 'Exit on completion');
 
-    var options = parser.parse(args);
+    options = parser.parse(args);
 
     if (options.help) {
         print("Usage: owljs-repl OPTIONS [ARGUMENTS] [OWLFILE...]\n");
@@ -42,6 +44,7 @@ function main(args) {
     }
 
     owl = new OWL();
+    owl.addCatalog();
 
     args.forEach(function(fn) { owl.loadFile(fn) } );
     q = new DLMatch(owl);
@@ -71,7 +74,8 @@ if (require.main == module.id) {
     main(system.args);
 }
 
-owlinit(owl);
-print(">> Welcome!");
-require('ringo/shell').start();
+if (options.exit == null) {
+    print(">> Welcome!");
+    require('ringo/shell').start();
+}
 

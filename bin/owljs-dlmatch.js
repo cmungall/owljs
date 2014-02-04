@@ -28,7 +28,7 @@ function main(args) {
         print("\nOptions:");
 	print(parser.help());
         print("\nExample:");
-        print("$ owljs-dlmatch 'part_of=owl.find(\"part of\");q.subClassOfMatch(\"?x\",q.objectSomeValuesFromMatch(\"?p\",\"?y\"))' test/data/ceph.owl");
+        print("$ owljs-dlmatch 'q.subClassOfMatch(\"?x\",q.objectSomeValuesFromMatch(o.part_of,\"?y\"))' test/data/ceph.owl");
         print("\nExample (output json):");
         print("$ owljs-dlmatch -t json 'part_of=owl.find(\"part of\");q.subClassOfMatch(\"?x\",q.objectSomeValuesFromMatch(\"?p\",\"?y\"))' test/data/ceph.owl");
         print("\nExample (find and replace):");
@@ -37,22 +37,25 @@ function main(args) {
     }
 
     var dlmatchPatternStr;
-    if (options.patterntionFile == null) {
+    if (options.patternFile == null) {
         dlmatchPatternStr = args.shift();
     }
 
     owl = new OWL();
+    owl.addCatalog();
     args.forEach(function(fn) { owl.loadFile(fn) } );
     var q = new DLMatch(owl);
-
+    var repl = require("owl/repl");
+    repl.owlinit(owl);
+    var o = repl.o;
 
     if (options.match != null) {
         dlmatchPattern = eval(options.match);
     }
 
-    if (options.dlmatchPatterntionFile != null) {
+    if (options.patternFile != null) {
         var fs = require("fs");
-        dlmatchPattern = eval(fs.read(options.dlmatchPatterntionFile));
+        dlmatchPattern = eval(fs.read(options.patternFile));
     }
 
     if (dlmatchPatternStr != null) {

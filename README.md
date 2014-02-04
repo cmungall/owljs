@@ -17,12 +17,16 @@ Run a DL query:
 
     owljs-dlquery -r elk "'part_of' some 'cell'" foo.owl
 
+Query based on templated pattern matching:
+
+    owljs-dlmatch 'q.subClassOfMatch("?x","?y")' foo.owl
+
 Start a [REPL](README-REPL.md):
 
     owljs-repl -i bootcl.js cl-edit.owl
     >> x = someValuesFrom(o.part_of, o.cell)
     >> cell_parts = owl.getInferredSubClasses(x)
-    >> cell_parts.map(pp) // print all cell parts
+    >> cell_parts.forEach(pp) // print all cell parts
 
 # Requirements
 

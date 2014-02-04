@@ -37,7 +37,7 @@ exports.testOps = function() {
     //obol.setIgnoreDefinedClasses(true);
     results = obol.parseSubClasses(o.epithelial_cell, null);
     repl.pp(results);
-    assert.equal(results.length, 7);
+    assert.equal(results.length, 127);
     
 };
 
