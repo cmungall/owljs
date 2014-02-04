@@ -1,3 +1,3 @@
 #!/bin/sh
-X=`which owljs-repl.js`
+X=`which owljs-diff.js`
 ringo-owl $X "$@"

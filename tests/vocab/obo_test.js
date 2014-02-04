@@ -15,7 +15,7 @@ exports.testOps = function() {
     owl.add(obovocab.definitionAssertion(owl, c, "a test class.", ["PMID:1234567"]));
     obovocab.addSynonym(owl, c, null, "syn1");
     obovocab.addSynonym(owl, c, obovocab.hasBroadSynonym, "syn2");
-    owl.save("test/foo.owl");
+    owl.save("target/vocab/syntest.owl");
 
     var svs = obovocab.getSynonymAnnotationValues(owl, c);
     print(svs);

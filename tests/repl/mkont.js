@@ -45,5 +45,5 @@ for (var i=1; i<=10; i++) {
     classAssertion(o.neuron, mkIndividual("n"+i));
 }
 
-save("test/repl/foo.owl")
+save("target/repl/foo.owl")
 
