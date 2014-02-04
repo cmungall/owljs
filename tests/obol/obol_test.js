@@ -12,7 +12,7 @@ function init() {
     if (owl == null) {
         owl = new OWL();
         //repl.owlinit(owl);
-        owl.loadOntology("test/data/clmin.ofn");
+        owl.loadOntology("tests/data/clmin.ofn");
     }
 }
 

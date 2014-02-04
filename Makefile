@@ -14,19 +14,5 @@ heroku-deploy:
 
 TEST = ringo-owl
 
-tests: 
-	$(TEST) test/alltests.js 
-
-# @Deprecated
-#test: test-dlmatch test-repl-author test-obol test-vocab-obo
-
-# @Deprecated
-test-repl-%:
-	$(TEST) test/repl/$*_test.js
-test-vocab-%:
-	$(TEST) test/vocab/$*_test.js
-test-obol-%:
-	$(TEST) test/obol/$*_test.js
-
-test-%:
-	$(TEST) test/$*/$*_test.js
+test: 
+	$(TEST) tests/alltests.js 

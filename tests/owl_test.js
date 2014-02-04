@@ -7,7 +7,7 @@ importPackage(Packages.org.semanticweb.owlapi.io);
 
 exports.testLoad = function() {
     var owl = new OWL();
-    owl.loadOntology("test/caro.owl");
+    owl.loadOntology("tests/caro.owl");
     var tt = owl.find("epithelium");
     console.log("EP="+tt);
     var ttf = owl.getFrame(tt);

@@ -1,5 +1,3 @@
-//require("./vocab/obo_test");
-
 var tests =
     [
         "owl/owl_test",        
@@ -14,15 +12,25 @@ var tests =
         "vocab/obo_test"
     ];
 
+var failed = [];
+
 if (require.main == module) {
     var probs = 0;
 
     tests.forEach( function(n) {
-        probs += require("test").run("./test/"+n);
+        var code = require("test").run("./tests/"+n);
+        if (code != 0) {
+            probs++;
+            failed.push(n);
+        }
+        //probs += code;
     });
 
 
     print("Problems: "+probs);
+    if (probs > 0) {
+        print("Failed: "+failed);
+    }
     require("system").exit(probs);
 
 }

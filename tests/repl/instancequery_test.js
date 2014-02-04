@@ -1,6 +1,5 @@
 include("owl/repl");
 var {OWL} = require("owl");
-var {DLMatch} = require("owl/dlmatch");
 var assert = require("assert");
 var fs = require('fs');
 
@@ -12,8 +11,7 @@ importPackage(Packages.org.semanticweb.owlapi.model);
 exports.testMakeOntology = function() {
     owl = new OWL();
     owlinit(owl);
-    //eval(fs.read("test/repl/mkont.js"));
-    load("test/repl/mkont.js");
+    load("tests/repl/instont.js");
 };
 
 

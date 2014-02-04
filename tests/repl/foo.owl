@@ -40,6 +40,32 @@
     
 
 
+    <!-- http://purl.obolibrary.org/obo/CL_0000000 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/CL_0000000">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/undefined_0000004"/>
+    </owl:Class>
+    <owl:Axiom>
+        <obo:undefined_0000015>my test</obo:undefined_0000015>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/CL_0000000"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/undefined_0000004"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/CL_0000182 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/CL_0000182"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/CL_0000540 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/CL_0000540"/>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/undefined_0000001 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/undefined_0000001">
@@ -177,14 +203,7 @@
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/undefined_0000016">
         <rdfs:label>cell</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/undefined_0000004"/>
     </owl:Class>
-    <owl:Axiom>
-        <obo:undefined_0000015>my test</obo:undefined_0000015>
-        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/undefined_0000004"/>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/undefined_0000016"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-    </owl:Axiom>
     
 
 
@@ -192,7 +211,7 @@
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/undefined_0000017">
         <rdfs:label>neuron</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/undefined_0000016"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CL_0000000"/>
         <owl:disjointWith rdf:resource="http://purl.obolibrary.org/obo/undefined_0000018"/>
         <owl:disjointWith rdf:resource="http://purl.obolibrary.org/obo/undefined_0000019"/>
         <owl:disjointWith rdf:resource="http://purl.obolibrary.org/obo/undefined_0000020"/>
@@ -204,7 +223,7 @@
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/undefined_0000018">
         <rdfs:label>hepatocyte</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/undefined_0000016"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CL_0000000"/>
         <owl:disjointWith rdf:resource="http://purl.obolibrary.org/obo/undefined_0000019"/>
         <owl:disjointWith rdf:resource="http://purl.obolibrary.org/obo/undefined_0000020"/>
     </owl:Class>
@@ -215,7 +234,7 @@
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/undefined_0000019">
         <rdfs:label>muscle cell</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/undefined_0000016"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CL_0000000"/>
         <owl:disjointWith rdf:resource="http://purl.obolibrary.org/obo/undefined_0000020"/>
     </owl:Class>
     
@@ -225,7 +244,7 @@
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/undefined_0000020">
         <rdfs:label>epithelial cell</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/undefined_0000016"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CL_0000000"/>
     </owl:Class>
     
 
@@ -244,7 +263,7 @@
     <!-- http://purl.obolibrary.org/obo/undefined_0000021 -->
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/undefined_0000021">
-        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/undefined_0000018"/>
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CL_0000182"/>
         <rdfs:label>hepatocyte1</rdfs:label>
     </owl:NamedIndividual>
     
@@ -253,7 +272,7 @@
     <!-- http://purl.obolibrary.org/obo/undefined_0000022 -->
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/undefined_0000022">
-        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/undefined_0000018"/>
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CL_0000182"/>
         <rdfs:label>hepatocyte2</rdfs:label>
     </owl:NamedIndividual>
     
@@ -262,7 +281,7 @@
     <!-- http://purl.obolibrary.org/obo/undefined_0000023 -->
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/undefined_0000023">
-        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/undefined_0000017"/>
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CL_0000540"/>
         <rdfs:label>n1</rdfs:label>
     </owl:NamedIndividual>
     
@@ -271,7 +290,7 @@
     <!-- http://purl.obolibrary.org/obo/undefined_0000024 -->
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/undefined_0000024">
-        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/undefined_0000017"/>
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CL_0000540"/>
         <rdfs:label>n2</rdfs:label>
     </owl:NamedIndividual>
     
@@ -280,7 +299,7 @@
     <!-- http://purl.obolibrary.org/obo/undefined_0000025 -->
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/undefined_0000025">
-        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/undefined_0000017"/>
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CL_0000540"/>
         <rdfs:label>n3</rdfs:label>
     </owl:NamedIndividual>
     
@@ -289,7 +308,7 @@
     <!-- http://purl.obolibrary.org/obo/undefined_0000026 -->
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/undefined_0000026">
-        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/undefined_0000017"/>
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CL_0000540"/>
         <rdfs:label>n4</rdfs:label>
     </owl:NamedIndividual>
     
@@ -298,7 +317,7 @@
     <!-- http://purl.obolibrary.org/obo/undefined_0000027 -->
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/undefined_0000027">
-        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/undefined_0000017"/>
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CL_0000540"/>
         <rdfs:label>n5</rdfs:label>
     </owl:NamedIndividual>
     
@@ -307,7 +326,7 @@
     <!-- http://purl.obolibrary.org/obo/undefined_0000028 -->
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/undefined_0000028">
-        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/undefined_0000017"/>
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CL_0000540"/>
         <rdfs:label>n6</rdfs:label>
     </owl:NamedIndividual>
     
@@ -316,7 +335,7 @@
     <!-- http://purl.obolibrary.org/obo/undefined_0000029 -->
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/undefined_0000029">
-        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/undefined_0000017"/>
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CL_0000540"/>
         <rdfs:label>n7</rdfs:label>
     </owl:NamedIndividual>
     
@@ -325,7 +344,7 @@
     <!-- http://purl.obolibrary.org/obo/undefined_0000030 -->
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/undefined_0000030">
-        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/undefined_0000017"/>
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CL_0000540"/>
         <rdfs:label>n8</rdfs:label>
     </owl:NamedIndividual>
     
@@ -334,7 +353,7 @@
     <!-- http://purl.obolibrary.org/obo/undefined_0000031 -->
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/undefined_0000031">
-        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/undefined_0000017"/>
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CL_0000540"/>
         <rdfs:label>n9</rdfs:label>
     </owl:NamedIndividual>
     
@@ -343,7 +362,7 @@
     <!-- http://purl.obolibrary.org/obo/undefined_0000032 -->
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/undefined_0000032">
-        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/undefined_0000017"/>
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CL_0000540"/>
         <rdfs:label>n10</rdfs:label>
     </owl:NamedIndividual>
 </rdf:RDF>

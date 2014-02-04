@@ -10,7 +10,7 @@ function init() {
     if (owl == null) {
         owl = new OWL();
         //repl.owlinit(owl);
-        owl.loadOntology("test/data/ceph.owl");
+        owl.loadOntology("tests/data/ceph.owl");
     }
 }
 
