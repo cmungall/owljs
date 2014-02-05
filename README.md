@@ -52,6 +52,13 @@ Set your path to include the owljs executables:
 
 (the exact path may vary, depending on your ringo installation)
 
+Alternatively, you can skip the install step and point directly to your checked out
+version:
+
+    export RINGO_MODULE_PATH="$HOME/repos/"
+
+(Assuming you git cloned owljs into ~/repos/)
+
 # Getting started
 
 You can use the pre-packaged scripts without any knowledge of the
