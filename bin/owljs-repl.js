@@ -1,13 +1,13 @@
 // we use include() rather than require(), deliberately polluting our namespace for convenience
-include("owl/repl"); 
+include("owljs/repl"); 
 
 var Parser = require('ringo/args').Parser;
 var system = require('system');
 var fs = require('fs');
 var {OWL} = require("owl");
-var {OWLFrame} = require("owl/owlframe");
-var {DLMatch} = require("owl/dlmatch");
-var {Obol} = require("owl/obol");
+var {OWLFrame} = require("owljs/owlframe");
+var {DLMatch} = require("owljs/dlmatch");
+var {Obol} = require("owljs/obol");
 var owl;
 var q;
 var obol;

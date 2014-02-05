@@ -1,7 +1,7 @@
 var Parser = require('ringo/args').Parser;
 var system = require('system');
 var {OWL} = require("owl");
-var {DLMatch} = require("owl/dlmatch");
+var {DLMatch} = require("owljs/dlmatch");
 
 importPackage(Packages.org.semanticweb.owlapi.model);
 var owl;
@@ -45,7 +45,7 @@ function main(args) {
     owl.addCatalog();
     args.forEach(function(fn) { owl.loadFile(fn) } );
     var q = new DLMatch(owl);
-    var repl = require("owl/repl");
+    var repl = require("owljs/repl");
     repl.owlinit(owl);
     var o = repl.o;
 

@@ -1,7 +1,7 @@
 var Parser = require('ringo/args').Parser;
 var system = require('system');
 var {OWL} = require("owl");
-var {Differ} = require("owl/Differ");
+var {Differ} = require("owljs/Differ");
 
 var owlA;
 var owlB;

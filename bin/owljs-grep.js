@@ -68,7 +68,7 @@ function main(args) {
         owl.log("#filteredObjects = " + filteredObjects.length);
 
         if (options.jsFrames) {
-            var repl = require("owl/repl");
+            var repl = require("owljs/repl");
             repl.owlinit(owl);
             for (var k in filteredObjects) {
                 var obj = filteredObjects[k];
@@ -86,7 +86,7 @@ function main(args) {
         owl.log("#filteredAxioms = " + filteredAxioms.length);
 
         if (options.jsFrames) {
-            var repl = require("owl/repl");
+            var repl = require("owljs/repl");
             repl.owlinit(owl);
             //repl.owl = owl;
             for (var k in filteredAxioms) {

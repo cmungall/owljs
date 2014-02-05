@@ -1,7 +1,7 @@
 var Parser = require('ringo/args').Parser;
 var system = require('system');
 var {OWL} = require("owl");
-var {Obol} = require("owl/obol");
+var {Obol} = require("owljs/obol");
 
 function main(args) {
     var script = args.shift();
@@ -11,7 +11,7 @@ function main(args) {
     parser.addOption('h', 'help', null, 'Display help');
     parser.addOption('q', 'query', 'String', 'sentence to parse');
     parser.addOption('r', 'rootClass', 'Class', 'root class to restrict search space. Can be IRI or name. E.g. "neuron" or "regulation of biological process"');
-    parser.addOption('m', 'module', 'Module', 'module in owl/obol to load. E.g. phenotype; E.g. anatomy; E.g. bp/involvedIn');
+    parser.addOption('m', 'module', 'Module', 'module in owljs/obol to load. E.g. phenotype; E.g. anatomy; E.g. bp/involvedIn');
     parser.addOption('o', 'outputFile', 'File', 'output OWL file where generated axioms are stored (defaults to stdout)');
     parser.addOption('t', 'toOutputFormat', 'OWLOntologyFormat', 'output format for generated axioms (defaults to RDFXML)');
     parser.addOption('F', 'forceGenerate', 'Variables', 'forces generation of classes for the given variable name or names (comma-separated). E.g. "part,whole"');
@@ -66,10 +66,10 @@ owljs-obol -p label,has_exact_synonym -T -v 1 -u -o xp.owl -t ofn -m bp/involved
         if (options.module.indexOf(".") == 0) {
             require(options.module);
         }
-        require("owl/obol/" + options.module);
+        require("owljs/obol/" + options.module);
     }
 
-    var repl = require("owl/repl");
+    var repl = require("owljs/repl");
     repl.owlinit(owl);
     var obol = new Obol(owl, repl.o);
 

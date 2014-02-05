@@ -47,7 +47,7 @@ function main(args) {
     owl.log("#filteredClasses = " + clist.length);
 
     if (options.jsFrames) {
-        var repl = require("owl/repl");
+        var repl = require("owljs/repl");
         repl.owlinit(owl);
         //repl.owl = owl;
         for (var ci in clist) {

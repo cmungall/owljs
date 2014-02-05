@@ -1,6 +1,6 @@
 var {OWL} = require("owl");
-var {Obol} = require("owl/obol");
-var repl = require("owl/repl");
+var {Obol} = require("owljs/obol");
+var repl = require("owljs/repl");
 var assert = require("assert");
 
 var owl;
@@ -22,7 +22,7 @@ exports.testOps = function() {
     var o = repl.o;
     obol = new Obol(owl, repl.o);
     owl.config.isCompareClasses = true;
-    require("owl/obol/anatomy");
+    require("owljs/obol/anatomy");
     var str = "cell of brain";
     var results = obol.parse(str, null);
     repl.pp(results);

@@ -1,4 +1,4 @@
-include("owl/repl");
+include("owljs/repl");
 var {OWL} = require("owl");
 var assert = require("assert");
 var fs = require('fs');

@@ -24,8 +24,8 @@ app.configure('route');
 app.configure('params');
 app.configure('static');
 
-var owlservices = require('./lib/owl/owlservices.js');
-var addons = require('./lib/owl/addons.js');
+var owlservices = require('./lib/owljs/owlservices.js');
+var addons = require('./lib/owljs/addons.js');
 
 print("owl is :"+session.owl);
 var myOwlservices = new owlservices.OWLServices(app,session);

@@ -1,5 +1,5 @@
 var {OWL} = require("owl");
-var {Differ} = require("owl/differ");
+var {Differ} = require("owljs/differ");
 var assert = require("assert");
 
 var differ;
@@ -17,8 +17,8 @@ function init() {
 
 exports.testDiffs = function() {
     init();
-    var ov = require("owl/vocab/obo");
-    var repl = require("owl/repl");
+    var ov = require("owljs/vocab/obo");
+    var repl = require("owljs/repl");
     var owlB = new OWL();
     repl.owlinit(owlB);
     owlB.loadOntology("tests/data/ceph.owl");

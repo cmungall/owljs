@@ -1,6 +1,6 @@
 var {OWL} = require("owl");
-var {Obol} = require("owl/obol");
-var obovocab = require("owl/vocab/obo");
+var {Obol} = require("owljs/obol");
+var obovocab = require("owljs/vocab/obo");
 var assert = require("assert");
 
 var owl;
@@ -94,7 +94,7 @@ exports.testGenerateLastToken = function() {
 
     obol.generate("whole");
     matches = obol.parseClass(fbPyramidalCell);
-    var repl = require("owl/repl");
+    var repl = require("owljs/repl");
     repl.pp(matches);
     assert.equal(matches.length, 1);
 
@@ -115,7 +115,7 @@ exports.testGenerateInitialToken = function() {
 
     obol.generate("part");
     matches = obol.parseClass(capc);
-    var repl = require("owl/repl");
+    var repl = require("owljs/repl");
     repl.pp(matches);
     assert.equal(matches.length, 1);
 }
@@ -135,7 +135,7 @@ exports.testGenerateViaSynonym = function() {
 
     obol.generate("part");
     matches = obol.parseClass(capc);
-    var repl = require("owl/repl");
+    var repl = require("owljs/repl");
     repl.pp(matches);
     assert.equal(matches.length, 1);
 }
@@ -156,7 +156,7 @@ exports.testDoubleGenerate = function() {
     obol.generate("part");
     obol.generate("whole");
     matches = obol.parseClass(capc, "part of whole");
-    var repl = require("owl/repl");
+    var repl = require("owljs/repl");
     repl.pp(matches);
     assert.equal(matches.length, 1);
 }
@@ -167,7 +167,7 @@ function testParse(erule, escore) {
     obol.useOboVocab();
     obol.logLevel = 5;
     var matches = obol.parseClass(caPyramidalCell);
-    var repl = require("owl/repl");
+    var repl = require("owljs/repl");
     repl.pp(matches);
     if (escore == null) {
         assert.equal(matches.length, 0);

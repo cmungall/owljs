@@ -1,5 +1,5 @@
 var {OWL} = require("owl");
-var obovocab = require("owl/vocab/obo");
+var obovocab = require("owljs/vocab/obo");
 var assert = require("assert");
 
 var owl;

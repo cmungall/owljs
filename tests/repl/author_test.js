@@ -1,6 +1,6 @@
-include("owl/repl");
+include("owljs/repl");
 var {OWL} = require("owl");
-var {DLMatch} = require("owl/dlmatch");
+var {DLMatch} = require("owljs/dlmatch");
 var assert = require("assert");
 var fs = require('fs');
 

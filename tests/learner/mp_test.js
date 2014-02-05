@@ -1,7 +1,7 @@
 var {OWL} = require("owl");
-var {Learner} = require("owl/learner");
+var {Learner} = require("owljs/learner");
 var assert = require("assert");
-var repl = require("owl/repl");
+var repl = require("owljs/repl");
 
 var learner;
 var owl;
