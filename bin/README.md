@@ -1,4 +1,4 @@
-owl.js scripts
+owljs scripts
 
 Be sure to add this directory to your $PATH
 

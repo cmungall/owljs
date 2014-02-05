@@ -5,7 +5,7 @@ the java OWLAPI.
 
 # Quickstart
 
-See [the API documentation](http://htmlpreview.github.io/?https://github.com/cmungall/owl.js/blob/master/docs/files/owl-js.html)
+See [the API documentation](http://htmlpreview.github.io/?https://github.com/cmungall/owljs/blob/master/docs/files/owl-js.html)
 
 Or try some [scripts](bin/README.md):
 
@@ -30,10 +30,10 @@ Start a [REPL](README-REPL.md):
 
 # Requirements
 
-owl.js requires [RingoJS](http://ringojs.org/), a CommonJS-based JavaScript runtime written
+owljs requires [RingoJS](http://ringojs.org/), a CommonJS-based JavaScript runtime written
 in Java and based on the Mozilla Rhino JavaScript engine.
 
-owl.js also requires an OWLAPI jar. This repository has the owltools
+owljs also requires an OWLAPI jar. This repository has the owltools
 jar bundled (which includes the owlapi as part).
 
 
@@ -44,9 +44,9 @@ Download and install ringojs from http://ringojs.org/
 
 Install using ringo-admin:
 
-     ringo-admin install cmungall/owl.js
+     ringo-admin install cmungall/owljs
 
-Set your path to include the owl.js executables:
+Set your path to include the owljs executables:
 
      export PATH="$PATH:/usr/share/ringojs/packages/owl/bin/
 
@@ -56,7 +56,7 @@ Set your path to include the owl.js executables:
 
 You can use the pre-packaged scripts without any knowledge of the
 API. For more interactive hacking, you can use the REPL. Custom
-scripts can be built using the the [owl.js API](http://htmlpreview.github.io/?https://github.com/cmungall/owl.js/blob/master/docs/files/owl-js.html)
+scripts can be built using the the [owljs API](http://htmlpreview.github.io/?https://github.com/cmungall/owljs/blob/master/docs/files/owl-js.html)
 
 ## Running Scripts
 
@@ -69,8 +69,8 @@ See the [bin/README](bin/README.md) for more details
 Hacking can be either interactive (in the REPL) or can involve writing
 your own scripts.
 
-Either requires some knowledge of [the owl.js
-API](http://htmlpreview.github.io/?https://github.com/cmungall/owl.js/blob/master/docs/files/owl-js.html),
+Either requires some knowledge of [the owljs
+API](http://htmlpreview.github.io/?https://github.com/cmungall/owljs/blob/master/docs/files/owl-js.html),
 and many some cases, knowledge of the java OWLAPI.
 
 ## REPL hacking
@@ -105,14 +105,14 @@ To run tests:
 
     make test
 
-See the [test/](https://github.com/cmungall/owl.js/tree/master/test)
+See the [test/](https://github.com/cmungall/owljs/tree/master/test)
 directory for individual tests.
 
 # Stability and future directions
 
 ## Combined use with BBOP and Monarch APIs
 
-owl.js is currently neutral w.r.t. domain - biology, pizzas, ...
+owljs is currently neutral w.r.t. domain - biology, pizzas, ...
 
 It can be combined with complementary domain-specific APIs (either js
 APIs, java APIs, or REST APIs). In particular, I anticipate adding
@@ -124,12 +124,12 @@ TODO
 
 ## Running under node.js
 
-owl.js makes JVM calls to the OWLAPI, so it would be difficult to port
+owljs makes JVM calls to the OWLAPI, so it would be difficult to port
 this to a non-JVM js engine such as Node. The system is designed to be
 one component in an ecosystem, and may one day include a RESTful
 server using JSON-LD, allowing any kinds of client access to OWL
 capabilities. The same API may be preserved, allowing a node.js client
-to make RESTful calls to a jvm owl.js server as if it were talking to
+to make RESTful calls to a jvm owljs server as if it were talking to
 the JVM.
 
 # Why JavaScript?
@@ -157,7 +157,7 @@ libraries such as bbop.js are a big win.
 It's not a perfect solution. Ringo has less of an ecosystem than
 node. And the Rhino engine (which Ringo is built on) has IMHO quite an
 awkward bridge between js and java, particularly when it comes to
-working with arrays or sets (owl.js has some convenience methods for
+working with arrays or sets (owljs has some convenience methods for
 wrapping these two). This may be less of an issue in future if we move
 towards some kind of standard REST access to the OWLAPI.
 

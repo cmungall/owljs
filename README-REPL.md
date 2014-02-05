@@ -1,5 +1,5 @@
 A Read-Eval-Print-Loop (REPL) is a powerful way to interactively query
-and modify ontologies. The owljs REPL allows full access to the owl.js
+and modify ontologies. The owljs REPL allows full access to the owljs
 API, as well as access to JVM calls, including those to the OWLAPI.
 
 ## Getting started
@@ -47,10 +47,10 @@ documentation for details.
 
 ## Sample session
 
-You can try this using the files distributed with owl.js
+You can try this using the files distributed with owljs
 
 ```
-~/repos/owl.js $ owljs-repl test/data/ceph.owl 
+~/repos/owljs $ owljs-repl test/data/ceph.owl 
 REPL enabled, all systems go!
 >> Welcome!
 >> o.tent^[TAB]
