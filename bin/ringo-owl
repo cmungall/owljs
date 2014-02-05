@@ -78,7 +78,6 @@ DEREFERENCED_CLASSPATH=`ls -1 -L $PATH_TO_ME/$CLASSPATH_RELATIVE | grep -v ontol
 export OWLTOOLS_JAR_PATH=$DEREFERENCED_CLASSPATH
 
 #BOOT="-b $PATH_TO_ME/pachyowl.js -b $PATH_TO_ME/owlrunner.js"
-#BOOT="-b $PATH_TO_ME/owlringo.js -b $PATH_TO_ME/pachyowl.js -b $PATH_TO_ME/owlrunner.js"
 ringo -J-Xmx4G  -DentityExpansionLimit=2048000 "$@"
 #ringo $BOOT -e "addToClasspath('$DEREFERENCED_CLASSPATH')" "$@"
 
