@@ -39,20 +39,18 @@ jar bundled (which includes the owlapi as part).
 
 # Installation
 
-Download and install ringojs
-http://ringojs.org/
+Download and install ringojs from http://ringojs.org/
+(or using your favorite package manager)
 
-Add ringo and owl.js to your PATH. E.g. assume you checked out this
-repo into a ~/repos directory:
+Install using ringo-admin:
 
-    export PATH=$PATH:$HOME/ringojs/bin
-    export PATH=$PATH:$HOME/repos/owl.js/bin
+     ringo-admin install cmungall/owl.js
 
-I'm currently working on installation via rp, the ringo package
-manager. For now, do this hacky measure:
+Set your path to include the owl.js executables:
 
-    cd $RINGO_HOME/packages/
-    ln -s ~/repos/owl.js owl
+     export PATH="$PATH:/usr/share/ringojs/packages/owl/bin/
+
+(the exact path may vary, depending on your ringo installation)
 
 # Getting started
 

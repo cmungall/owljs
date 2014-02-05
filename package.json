@@ -29,5 +29,9 @@
     "engines": {
         "ringojs": ">= 0.9"
     },
+    "bin": {
+        "owljs" : "bin/owljs",
+        "owljs-repl.js" : "bin/owljs-repl.js",
+    },
     "main": "lib/owl.js"
 }

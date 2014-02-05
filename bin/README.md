@@ -5,8 +5,7 @@ Be sure to add this directory to your $PATH
 ## Scripts
 
  * [owljs-repl](owljs-repl.js) - start a Read-Eval-Print Loop
- * [owljs-grep](owljs-grep.js) - filter axioms from an ontology
- * [owljs-cgrep](owljs-cgrep.js) - filter classes from an ontology
+ * [owljs-grep](owljs-grep.js) - filter axioms or objects from an ontology
  * [owljs-dlquery](owljs-dlquery.js) - perform a DL query using a reasoner
  * [owljs-dlmatch](owljs-dlmatch.js) - query axioms for those matching a template pattern
  * [owljs-diff](owljs-diff.js) - performs diff on two OWL files
