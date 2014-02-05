@@ -4,7 +4,7 @@ include("owljs/repl");
 var Parser = require('ringo/args').Parser;
 var system = require('system');
 var fs = require('fs');
-var {OWL} = require("owl");
+var {OWL} = require("owljs");
 var {OWLFrame} = require("owljs/owlframe");
 var {DLMatch} = require("owljs/dlmatch");
 var {Obol} = require("owljs/obol");

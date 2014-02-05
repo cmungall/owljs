@@ -1,6 +1,6 @@
 var Parser = require('ringo/args').Parser;
 var system = require('system');
-var {OWL} = require("owl");
+var {OWL} = require("owljs");
 
 var owl;
 function main(args) {

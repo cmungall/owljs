@@ -1,4 +1,4 @@
-var {OWL} = require("owl");
+var {OWL} = require("owljs");
 var {DLMatch} = require("owljs/dlmatch");
 var assert = require("assert");
 var repl = require("owljs/repl");

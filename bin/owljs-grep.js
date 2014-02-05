@@ -1,6 +1,6 @@
 var Parser = require('ringo/args').Parser;
 var system = require('system');
-var {OWL} = require("owl");
+var {OWL} = require("owljs");
 
 // have this available for evaluation of user functions
 importPackage(Packages.org.semanticweb.owlapi.model);

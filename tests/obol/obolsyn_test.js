@@ -1,4 +1,4 @@
-var {OWL} = require("owl");
+var {OWL} = require("owljs");
 var {Obol} = require("owljs/obol");
 var obovocab = require("owljs/vocab/obo");
 var assert = require("assert");

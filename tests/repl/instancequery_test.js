@@ -1,5 +1,5 @@
 include("owljs/repl");
-var {OWL} = require("owl");
+var {OWL} = require("owljs");
 var assert = require("assert");
 var fs = require('fs');
 
