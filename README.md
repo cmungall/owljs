@@ -7,7 +7,7 @@ the java OWLAPI.
 
 See [the API documentation](http://htmlpreview.github.io/?https://github.com/cmungall/owl.js/blob/master/docs/files/owl-js.html)
 
-Or try some scripts:
+Or try some [scripts](bin/README.md):
 
 Remove annotation assertions from an ontology:
 
