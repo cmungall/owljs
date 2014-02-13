@@ -12,6 +12,7 @@ function main(args) {
 
     parser.addOption('h', 'help', null, 'Display help');
     parser.addOption('r', 'reasoner', 'Reasoner', 'set reasoner factory. Default is elk. NOT IMPLEMENTED');
+    parser.addOption('c', 'importsClosure', null, 'set this flag if the full import closure is to be diffed');
     parser.addOption('o', 'outputFile', 'File', 'output file (defaults to stdout)');
 
     var options = parser.parse(args);
@@ -34,8 +35,10 @@ function main(args) {
     owlB.addCatalog();
     owlB.loadFile(args[1]);
 
+    var incClosure = options.importsClosure == null ? false : true;
+
     var differ = new Differ();
-    var md = differ.getDiffsAsMarkdown(owlA, owlB, false, false);
+    var md = differ.getDiffsAsMarkdown(owlA, owlB, incClosure, false);
 
     if (options.outputFile != null) {
         var fs = require('fs');
