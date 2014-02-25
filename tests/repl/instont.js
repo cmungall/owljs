@@ -10,7 +10,7 @@ addMembers(o.cascade, ["c1"])
 addMembers(o.pathway, ["p1"])
 propertyAssertion(o.part_of, o.i1, o.c1)
 propertyAssertion(o.part_of, o.c1, o.p1)
-
+owl.setReasonerType("hermit")
 x = someValuesFrom(o.part_of, o.pathway)
 inds = owl.getInferredInstances(x, false);
 print("#inds = "+inds.length);

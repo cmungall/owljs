@@ -1,7 +1,6 @@
 var {OWL} = require("owljs");
 var assert = require("assert");
 
-var matcher;
 var owl;
 
 importPackage(Packages.org.semanticweb.owlapi.model);
@@ -9,8 +8,9 @@ importPackage(Packages.org.semanticweb.owlapi.model);
 function init() {
     if (owl == null) {
         owl = new OWL();
+        owl.addCatalog("tests/data/catalog-v001.xml");
         //repl.owlinit(owl);
-        owl.loadOntology("tests/data/ceph.owl");
+        owl.loadOntology("tests/data/ceph-import.owl");
     }
 }
 
