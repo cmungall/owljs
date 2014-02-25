@@ -150,7 +150,7 @@ There are a number of excellent efforts that leverage the OWLAPI from
 other JVM libraries including:
 
  * Groovy
- * Scala (https://github.com/balhoff/strix)
+ * Scala (https://github.com/phenoscape/scowl)
  * Clojure (Tawny-OWL)
  * Armed Bear Common Lisp (LSW)
 
