@@ -8,7 +8,6 @@ var {OWL} = require("owljs");
 var {OWLFrame} = require("owljs/owlframe");
 var {DLMatch} = require("owljs/dlmatch");
 var {Obol} = require("owljs/obol");
-var owl;
 var q;
 var obol;
 var options;
