@@ -13,6 +13,7 @@ function main(args) {
     parser.addOption('h', 'help', null, 'Display help');
     parser.addOption('r', 'reasoner', 'Reasoner', 'set reasoner factory. Default is elk. NOT IMPLEMENTED');
     parser.addOption('c', 'importsClosure', null, 'set this flag if the full import closure is to be diffed');
+    parser.addOption('C', 'catalog', 'File', 'XML catalog for imports');
     parser.addOption('o', 'outputFile', 'File', 'output file (defaults to stdout)');
 
     var options = parser.parse(args);
@@ -28,11 +29,11 @@ function main(args) {
     }
 
     owlA = new OWL();
-    owlA.addCatalog();
+    owlA.addCatalog(options.catalog);
     owlA.loadFile(args[0]);
 
     owlB = new OWL();
-    owlB.addCatalog();
+    owlB.addCatalog(options.catalog);
     owlB.loadFile(args[1]);
 
     var incClosure = options.importsClosure == null ? false : true;

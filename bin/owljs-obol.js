@@ -40,6 +40,10 @@ owljs-obol -m anatomy -r neuron cl.owl\n\
 Example:\n\
 # parses undefined classes from GO using precise synonyms, using involved_in pattern, testing if object is subsumed by expression\n\
 owljs-obol -p label,has_exact_synonym -T -v 1 -u -o xp.owl -t ofn -m bp/involvedIn -u gene_ontology_write.obo\n\
+\n\
+Example:\n\
+# finds equivalent class pairs\n\
+owljs-obol  -u -o xp.owl -t ofn -m equiv uberon.owl ma.owl\n\
 ");
 	system.exit('-1');
     }
