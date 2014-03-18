@@ -102,7 +102,7 @@ mkObjectProperty("specified by", {});
 mkObjectProperty("directly_specified by", {});
 subPropertyOf(o.directly_specified_by, o.specified_by);
 subPropertyChainOf([o.specialization_of, o.specified_by], o.specified_by);
-subPropertyChainOf([o.adapted_from, o.specified_by], o.specified_by);
+//subPropertyChainOf([o.adapted_from, o.specified_by], o.specified_by);
 mkObjectProperty("part of specified by", {});
 subPropertyChainOf([o.part_of, o.specified_by], o.part_of_specified_by);
 
@@ -167,7 +167,7 @@ addMembersInHierarchy(
 //           ["pelvic girdle",
 //            "pectoral girdle"]);
 
-addMembers(o.pathway, ["appendage pathway"])
+addMembers(o.pathway, ["fin pathway"])
 
 
 
@@ -199,7 +199,7 @@ addMembersInHierarchy(
     });
 
 propertyAssertion( o.develops_from, o.appendage_bud, o.fin );
-propertyAssertion( o.directly_specified_by, o.fin, o.appendage_pathway );
+propertyAssertion( o.directly_specified_by, o.fin, o.fin_pathway );
 
 adapt({
     label: "pelvic girdle",
@@ -252,31 +252,87 @@ propertyAssertion( o.part_of, o.limb, o.tetrapod );
 
 propertyAssertion( o.develops_from, o.limb, o.limb_bud ); // TODO - via adapts relation
 
+/*
+adapt({
+    label: "pelvic fin pathway",
+    transition: "evolution of paired fins from fin fold??",
+    template: o.fin_pathway, 
+    template_relation: o.specialization_of,
+    follow_inverse: o.part_of_specified_by, 
+    differentia: {
+        property: o.connected_to, 
+        filler: o.pelvic_girdle
+    }
+});
 
-    adapt({
-        label: "pelvic fin",
-        transition: "evolution of paired fins from fin fold??",
-        template: o.fin, 
-        template_relation: o.specialization_of,
-        follow_inverse: o.part_of, 
-        differentia: {
-            property: o.connected_to, 
-            filler: o.pelvic_girdle
-        }
-    });
+adapt({
+    label: "pectoral fin pathway",
+    transition: "evolution of paired fins from fin fold??",
+    template: o.fin_pathway, 
+    template_relation: o.specialization_of,
+    follow_inverse: o.part_of_specified_by, 
+    differentia: {
+        property: o.connected_to, 
+        filler: o.pectoral_girdle
+    }
+});
+*/
 
-    adapt({
-        label: "pectoral fin",
-        transition: "evolution of paired fins from fin fold??",
-        template: o.fin, 
-        template_relation: o.specialization_of,
-        follow_inverse: o.part_of, 
-        differentia: {
-            property: o.connected_to, 
-            filler: o.pectoral_girdle
-        }
-    });
 
+
+adapt({
+    label: "pelvic fin pathway",
+    transition: "evolution of paired fins from fin fold??",
+    template: o.fin_pathway, 
+    template_relation: o.specialization_of,
+    follow_inverse: o.directly_specified_by, 
+    differentia: {
+        property: o.connected_to, 
+        filler: o.pelvic_girdle
+    }
+});
+adapt({
+    label: "pectoral fin pathway",
+    transition: "evolution of paired fins from fin fold??",
+    template: o.fin_pathway, 
+    template_relation: o.specialization_of,
+    follow_inverse: o.directly_specified_by, 
+    differentia: {
+        property: o.connected_to, 
+        filler: o.pectoral_girdle
+    }
+});
+
+adapt({
+    label: "pelvic fin",
+    transition: "evolution of paired fins from fin fold??",
+    template: o.fin, 
+    template_relation: o.specialization_of,
+    follow_inverse: o.part_of, 
+    differentia: {
+        property: o.connected_to, 
+        filler: o.pelvic_girdle
+    }
+});
+
+adapt({
+    label: "pectoral fin",
+    transition: "evolution of paired fins from fin fold??",
+    template: o.fin, 
+    template_relation: o.specialization_of,
+    follow_inverse: o.part_of, 
+    differentia: {
+        property: o.connected_to, 
+        filler: o.pectoral_girdle
+    }
+});
+
+adapt({
+    label: "limb pathway",
+    template: o.fin_pathway, 
+    template_relation: o.specialization_of,
+    follow_inverse: o.specified_by, 
+});
 
 var pectoral_limb = 
     adapt({
