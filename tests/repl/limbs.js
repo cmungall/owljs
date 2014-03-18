@@ -18,6 +18,7 @@ var adapt = function(opts) {
 
     var newBaseLabel = owl.getLabel(newBase);
     owl.getReasoner().flush();
+    // child instances are also cloned
     var inds = owl.getInferredInstances( hasValue(queryProp, baseInd), false);
     inds.push(baseInd);
     var clonemap = {};
@@ -80,8 +81,9 @@ var adapt = function(opts) {
 mkObjectProperty("develops from", { transitive: true })
 mkObjectProperty("part of", { transitive: true })
 subPropertyChainOf([o.part_of, o.develops_from], o.develops_from);
-mkObjectProperty("develops from part of", { transitive: true })
-subPropertyChainOf([o.develops_from, o.part_of], o.develops_from_part_of);
+subPropertyChainOf([o.develops_from, o.part_of], o.develops_from);
+mkObjectProperty("has developmental contribution from", { transitive: true })
+subPropertyChainOf([inverseOf(o.part_of), o.develops_from], o.has_developmental_contribution_from);
 
 mkObjectProperty("specialization of", { transitive: true })
 mkObjectProperty("adapted from", { transitive: true })
@@ -96,6 +98,14 @@ subPropertyChainOf([o.adapted_from, inverseOf(o.adapted_from)], o.homologous_to)
 mkObjectProperty("serially homologous to", {transitive: true});
 subPropertyChainOf([o.specialization_of, inverseOf(o.specialization_of)], o.serially_homologous_to);
 
+mkObjectProperty("specified by", {});
+mkObjectProperty("directly_specified by", {});
+subPropertyOf(o.directly_specified_by, o.specified_by);
+subPropertyChainOf([o.specialization_of, o.specified_by], o.specified_by);
+subPropertyChainOf([o.adapted_from, o.specified_by], o.specified_by);
+mkObjectProperty("part of specified by", {});
+subPropertyChainOf([o.part_of, o.specified_by], o.part_of_specified_by);
+
 // UPPER ONTOLOGY: CLASSES
 mkDisjointUnion(
     {
@@ -103,7 +113,8 @@ mkDisjointUnion(
             "organism" : {},
             "appendage" : {},
             "segment" : {},
-        }
+        },
+        "pathway" : {}
     });
 mkClass("acropod element");
 subClassOf(o.acropod_element, o.segment); // ??
@@ -119,6 +130,7 @@ addMembersInHierarchy(
                             "sacropterygian" : {
                                 "tetrapod" : {
                                     "amniote" : {
+                                        "chicken" : {},
                                         "mammal" : {
                                             "therian" : {
                                                 "euarchontoglires" : {
@@ -155,6 +167,7 @@ addMembersInHierarchy(
 //           ["pelvic girdle",
 //            "pectoral girdle"]);
 
+addMembers(o.pathway, ["appendage pathway"])
 
 
 
@@ -186,6 +199,7 @@ addMembersInHierarchy(
     });
 
 propertyAssertion( o.develops_from, o.appendage_bud, o.fin );
+propertyAssertion( o.directly_specified_by, o.fin, o.appendage_pathway );
 
 adapt({
     label: "pelvic girdle",
@@ -224,10 +238,10 @@ adapt({
     template: o.appendage_bud, 
     template_relation: o.adapted_from,
     follow_inverse: o.part_of,
-    differentia : {
-        property: o.part_of, 
-        filler: o.limb
-    }
+    //differentia : {
+    //property: o.part_of, 
+    //filler: o.limb
+    //}
 });
 
 // connect to evolutionary history
@@ -239,7 +253,6 @@ propertyAssertion( o.part_of, o.limb, o.tetrapod );
 propertyAssertion( o.develops_from, o.limb, o.limb_bud ); // TODO - via adapts relation
 
 
-var pelvic_fin =
     adapt({
         label: "pelvic fin",
         transition: "evolution of paired fins from fin fold??",
@@ -251,7 +264,7 @@ var pelvic_fin =
             filler: o.pelvic_girdle
         }
     });
-var pectoral_fin =
+
     adapt({
         label: "pectoral fin",
         transition: "evolution of paired fins from fin fold??",
@@ -263,6 +276,7 @@ var pectoral_fin =
             filler: o.pectoral_girdle
         }
     });
+
 
 var pectoral_limb = 
     adapt({
@@ -285,6 +299,16 @@ var pelvic_limb =
         differentia: {
             property: o.adapted_from, 
             filler: o.pelvic_fin
+        }
+    });
+
+var chicken_bud =
+    adapt({
+        template: o.limb, 
+        follow_inverse: o.part_of, 
+        differentia: {
+            property: o.part_of, 
+            filler: o.mammal
         }
     });
 
