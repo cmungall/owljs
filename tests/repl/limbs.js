@@ -1,7 +1,7 @@
 var assert = require("assert")
 createOntology()
 addMode(true)
-owl.setReasonerType("hermit")
+owl.setReasonerType("hermit"); // TODO 
 
 var adapt = function(opts) {
 
@@ -19,7 +19,9 @@ var adapt = function(opts) {
     var newBaseLabel = owl.getLabel(newBase);
     owl.getReasoner().flush();
     // child instances are also cloned
+    console.log("Q: "+ hasValue(queryProp, baseInd));
     var inds = owl.getInferredInstances( hasValue(queryProp, baseInd), false);
+    console.log("CHILDREN OF: "+ baseInd+ " " + inds.length+" by inv: "+queryProp);
     inds.push(baseInd);
     var clonemap = {};
     var baseClone;
@@ -102,9 +104,11 @@ mkObjectProperty("specified by", {});
 mkObjectProperty("directly_specified by", {});
 subPropertyOf(o.directly_specified_by, o.specified_by);
 subPropertyChainOf([o.specialization_of, o.specified_by], o.specified_by);
+subPropertyChainOf([o.specified_by, o.specialization_of], o.specified_by);
 //subPropertyChainOf([o.adapted_from, o.specified_by], o.specified_by);
 mkObjectProperty("part of specified by", {});
 subPropertyChainOf([o.part_of, o.specified_by], o.part_of_specified_by);
+subPropertyOf(o.specified_by, o.part_of_specified_by);
 
 // UPPER ONTOLOGY: CLASSES
 mkDisjointUnion(
@@ -114,10 +118,12 @@ mkDisjointUnion(
             "appendage" : {},
             "segment" : {},
         },
-        "pathway" : {}
+        "pathway" : {},
+        "gene" : {}
     });
 mkClass("acropod element");
 subClassOf(o.acropod_element, o.segment); // ??
+addMembers(o.gene, ["g1", "g2"]);
 
 // TAXONOMY
 addMembersInHierarchy(
@@ -201,19 +207,30 @@ addMembersInHierarchy(
 propertyAssertion( o.develops_from, o.appendage_bud, o.fin );
 propertyAssertion( o.directly_specified_by, o.fin, o.fin_pathway );
 
+/*
 adapt({
     label: "pelvic girdle",
     template: o.girdle, 
     template_relation: o.specialization_of,
     follow_inverse: o.part_of, 
+    differentia : {
+        property: o.part_of, 
+        filler: o.pelvic_girdle
+    }
 });
 
+save("foo.owl")
 adapt({
     label: "pectoral girdle",
     template: o.girdle, 
     template_relation: o.specialization_of,
     follow_inverse: o.part_of, 
+    differentia : {
+        property: o.part_of, 
+        filler: o.pectoral_girdle
+    }
 });
+*/
 
 // special rules for digits; ensure each is a type of generic dicit
 var digits = [o.digit1, o.digit2, o.digit3, o.digit4, o.digit5];
@@ -286,9 +303,9 @@ adapt({
     template: o.fin_pathway, 
     template_relation: o.specialization_of,
     follow_inverse: o.directly_specified_by, 
-    differentia: {
-        property: o.connected_to, 
-        filler: o.pelvic_girdle
+    differentia: { 
+        property: o.specified_by, 
+        filler: o.g1
     }
 });
 adapt({
@@ -298,11 +315,12 @@ adapt({
     template_relation: o.specialization_of,
     follow_inverse: o.directly_specified_by, 
     differentia: {
-        property: o.connected_to, 
-        filler: o.pectoral_girdle
+        property: o.specified_by, 
+        filler: o.g2
     }
 });
 
+/*
 adapt({
     label: "pelvic fin",
     transition: "evolution of paired fins from fin fold??",
@@ -326,107 +344,18 @@ adapt({
         filler: o.pectoral_girdle
     }
 });
+*/
 
 adapt({
-    label: "limb pathway",
+    label : "limb pathway",
     template: o.fin_pathway, 
-    template_relation: o.specialization_of,
-    follow_inverse: o.specified_by, 
+    template_relation: o.adapted_from,
+    follow_inverse: o.part_of_specified_by, 
+    differentia: {
+        property: o.part_of, 
+        filler: o.tetrapod
+    }
 });
-
-var pectoral_limb = 
-    adapt({
-        label : "forelimb",
-        template: o.limb, 
-        template_relation: o.specialization_of,
-        follow_inverse: o.part_of, 
-        differentia: {
-            property: o.adapted_from, 
-            filler: o.pectoral_fin
-        }
-    });
-
-var pelvic_limb = 
-    adapt({
-        label : "hindlimb",
-        template: o.limb, 
-        template_relation: o.specialization_of,
-        follow_inverse: o.part_of, 
-        differentia: {
-            property: o.adapted_from, 
-            filler: o.pelvic_fin
-        }
-    });
-
-var chicken_bud =
-    adapt({
-        template: o.limb, 
-        follow_inverse: o.part_of, 
-        differentia: {
-            property: o.part_of, 
-            filler: o.mammal
-        }
-    });
-
-var mammal_limb =
-    adapt({
-        template: o.limb, 
-        follow_inverse: o.part_of, 
-        differentia: {
-            property: o.part_of, 
-            filler: o.mammal
-        }
-    });
-
-[o.forelimb, o.hindlimb].forEach(function(x) {
-    adapt({
-        template: x, 
-        follow_inverse: o.part_of, 
-        differentia: {
-            property: o.part_of, 
-            filler: o.mammal
-        }})
-});
-         
-
-
-var human_limb = 
-    adapt({
-        template: mammal_limb, 
-        template_relation: o.adapted_from,
-        follow_inverse: o.part_of, 
-        differentia: {
-            property: o.part_of, 
-            filler: o.human
-        }
-    });
-
-var mouse_limb = 
-    adapt({
-        template: mammal_limb, 
-        follow_inverse: o.part_of, 
-        differentia: {
-            property: o.part_of, 
-            filler: o.mouse
-        }
-    });
-
-var cow_limb = 
-    adapt({
-        template: mammal_limb, 
-        follow_inverse: o.part_of, 
-        differentia: {
-            property: o.part_of, 
-            filler: o.cow
-        },
-        loses: [
-            o.digit1__mammal,
-            o.digit2__mammal,
-            o.digit4__mammal,
-            o.digit5__mammal
-        ],
-        
-    });
 
 
 save("foo.owl")

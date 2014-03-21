@@ -43,7 +43,7 @@ owljs-obol -p label,has_exact_synonym -T -v 1 -u -o xp.owl -t ofn -m bp/involved
 \n\
 Example:\n\
 # finds equivalent class pairs\n\
-owljs-obol  -u -o xp.owl -t ofn -m equiv uberon.owl ma.owl\n\
+owljs-obol  -o xp.owl -t ofn -m equiv uberon.owl ma.owl\n\
 ");
 	system.exit('-1');
     }
@@ -60,7 +60,7 @@ owljs-obol  -u -o xp.owl -t ofn -m equiv uberon.owl ma.owl\n\
         owl.setDefaultFormat(options.toOutputFormat);
     }
 
-    args.forEach(function(fn) { owl.loadFile(fn) } );
+    args.forEach(function(fn) { owl.loadFile(fn, {addToImport: true}) } );
 
     if (options.load != null) {
         owl.log("Loading "+options.load);

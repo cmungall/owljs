@@ -139,6 +139,42 @@ capabilities. The same API may be preserved, allowing a node.js client
 to make RESTful calls to a jvm owljs server as if it were talking to
 the JVM.
 
+# Applications
+
+See the [scripts](bin/README.md) in the bin directory
+
+## owljs-diff
+
+Yet Another owl diffing tool. The goal for this tool is to be
+maximally configurable to allow plugging in custom js functions, as
+diff requirements differ!
+
+Basic usage is:
+
+    owljs-diff ONT1.owl ONT2.owl > diff.md
+
+OBO format can be used as well.
+
+Output format is currently only markdown (although in principle it
+should be easy to write custom renderers). Markdown has a number of
+advantages - it is reasonably human readable, and is a standard markup
+format in many platforms.
+
+For examples of markdown output, see the release notes on
+http://uberon.org - generated using a combination of owljs-diff and
+the Jekyll platform.
+
+The core library is lib/Differ.js
+
+## owljs-obol
+
+This tool parses labels and synonyms, matches sub-strings and checks
+these against standard patterns to be able to generate equivalence
+axioms.
+
+It is being used to retrospectively axiomatize various ontologies that
+were not designed in OWL from the ground-up.
+
 # Why JavaScript?
 
 The java OWLAPI is the library of choice for serious heavyweight

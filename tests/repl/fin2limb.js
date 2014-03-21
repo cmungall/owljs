@@ -28,14 +28,23 @@ var adapt = function(opts) {
     for (var k in inds) {
         var ind = inds[k];
         console.log(" CHILD: "+ind);
-        if (opts.loses != null && opts.loses.indexOf(ind) > -1) {
-            console.log("LOSS OF "+ind);
-            continue;
+        if (opts.loses != null) {
+            if (owl.getInferredPropertyValues( ind, o.specialization_of).filter(function(anc) {
+                return opts.loses.indexOf(anc) > -1
+            }).length > 0) {
+                console.log("LOSS OF "+ind);
+                continue;
+            }
         }
         var label = owl.getLabel(ind);
         var cloneLabel = label + ", " + newBaseLabel;
         if (opts.label != null) {
-            cloneLabel = opts.label + " of " + label;
+            if (template_relation.equals(o.adapted_from)) {
+                cloneLabel = label + " of " + opts.label;
+            }
+            else {
+                cloneLabel = opts.label + " of " + label;
+            }
             if (ind.equals(baseInd)) {
                 cloneLabel = opts.label;
             }
@@ -96,11 +105,16 @@ subPropertyChainOf([o.specialization_of, o.specified_by], o.specified_by);
 
 mkObjectProperty("part of specialization of", { transitive: true, comment: "may not work in hermit" })
 subPropertyOf(o.specialization_of, o.part_of_specialization_of)
+subPropertyOf(o.part_of, o.part_of_specialization_of)
 subPropertyChainOf([o.part_of, o.part_of_specialization_of], o.part_of_specialization_of);
 
 mkObjectProperty("indirectly specified by", { transitive: true, comment: "..." })
 subPropertyOf(o.specified_by, o.indirectly_specified_by)
 subPropertyChainOf([o.part_of_specialization_of, o.indirectly_specified_by], o.indirectly_specified_by);
+
+mkObjectProperty("ancestor of", { transitive: true, reflexive: true })
+subPropertyOf(o.specialization_of, o.ancestor_of);
+subPropertyOf(o.adapted_from, o.ancestor_of);
 
 
 // UPPER ONTOLOGY: CLASSES
@@ -198,7 +212,7 @@ adapt({
     }
 });
 
-
+/*
 adapt({
     label: "limb pathway",
     transition: "fin to limb, genetic switch",
@@ -209,6 +223,24 @@ adapt({
         "fin" : "limb",
         "pectoral fin" : "forelimb",
         "pevlic fin" : "hindlimb",
+    },
+    differentia: { 
+        property: o.part_of, 
+        filler: o.tetrapod
+    }
+});
+*/
+
+adapt({
+    label: "limb",
+    transition: "fin to limb, genetic switch",
+    template: o.fin, 
+    template_relation: o.adapted_from,
+    follow_inverse: o.specialization_of, 
+    label_map : {
+        //"fin" : "limb",
+        "pectoral fin" : "forelimb",
+        "pelvic fin" : "hindlimb",
     },
     differentia: { 
         property: o.part_of, 
@@ -294,7 +326,9 @@ adapt({
         filler: o.tetrapod
     },
     loses: [
-        o.digit_8 // TODO
+        o.digit_6,
+        o.digit_7,
+        o.digit_8,
     ]
 });
 
