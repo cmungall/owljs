@@ -43,6 +43,34 @@ You can also type
     >> o.neuron
     [uk.ac.manchester.cs.owl.owlapi.OWLClassImpl <http://purl.obolibrary.org/obo/CL_0000540>]
 
+The pretty-print function can be used in conjunction with the frame
+convenience function, which translates an OWLClass into an OWLFrame, a
+more object-oriented representation:
+
+```
+>> pp(frame(o.hippocampal_granule_cell))
+{ id: "http://purl.obolibrary.org/obo/CL_0001033",
+  equivalentTo: 
+    [ intersectionOf(o.granule_cell, someValuesFrom(o.part_of , o.Ammon_s_horn) )
+    ],
+  annotations: 
+    [ ann(o.has_obo_namespace , "cell") ,
+      ann(o.definition , "Granule cell that is part of the hippocampus.") ,
+      ann(o.label , "hippocampal granule cell") 
+    ],
+  subClassOf: 
+    [ someValuesFrom(o.part_of , o.Ammon_s_horn) ,
+      o.hippocampal_neuron,
+      o.cortical_granule_cell
+    ]
+}
+```
+
+Note that the output of pp is valid js that can be evaluated in a repl context.
+
+
+## Modifying the ontology
+
 Axioms can be directly added as follows:
 
     >> add( subClassOf(o.neuron, someValuesFrom(o.part_of, o.nervous_system)) )
@@ -165,9 +193,14 @@ Then, on the unix command line start the owljs session:
 owljs-repl -i cl-my-conf.js cl-edit.owl
 ```
 
-```
-mkClass({label: "my cell", subClassOf: o.neuron, definition: "yadda"})
-```
+Now you can create new classes using the `mkClass` shortcut:
+
+    >> mkClass({label: "my cell", subClassOf: o.neuron, definition: "yadda"})
+
+See hthe documentation for Frame to see the list of allowed tags -
+generally these follow manchester syntax, or they are labels for
+annotation properties.
+
 
 Inspired by tawny-owl, but less elegant, you can author ontologies as either js programs or directly on the command line
 
