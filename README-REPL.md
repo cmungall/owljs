@@ -141,7 +141,7 @@ o.protective_membrane
 
 Inspired by tawny-owl, but less elegant, you can author ontologies as either js programs or directly on the command line
 
-``
+```
 addMode(true)
 createOntology("test")
 
@@ -195,5 +195,6 @@ for (var i=1; i<=10; i++) {
 
 // save the ontology
 save("target/repl/foo.owl")
-``
+```
+
 
