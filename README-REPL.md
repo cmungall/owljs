@@ -139,6 +139,36 @@ o.protective_membrane
 
 ## Ontology authoring in js
 
+First ensure you have a default URI prefix set up. This is best done via a startup script, such as the one below
+
+```
+$ cat cl-my-conf.js 
+// To use this conf:
+//
+// cd cell-ontology/src/ontology
+// owljs-repl -i cl-my-conf.js cl-edit.owl
+//
+// Make sure file is copied to same dir, or add a symlink.
+// You can clone this for your own setup
+
+owl.config.idspace = 'CL';
+owl.config.lastId = 10000; // MY
+owl.defaultSlotMap = { created_by : "ORCID:1234" };
+owl.config.defaultFormat = new org.semanticweb.owlapi.io.OWLFunctionalSyntaxOntologyFormat(); // todo - introspect this
+
+print("Welcome, ME");
+```
+
+Then, on the unix command line start the owljs session:
+
+```
+owljs-repl -i cl-my-conf.js cl-edit.owl
+```
+
+```
+mkClass({label: "my cell", subClassOf: o.neuron, definition: "yadda"})
+```
+
 Inspired by tawny-owl, but less elegant, you can author ontologies as either js programs or directly on the command line
 
 ```
