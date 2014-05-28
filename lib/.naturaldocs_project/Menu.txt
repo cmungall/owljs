@@ -48,11 +48,14 @@ Footer: [<a href="https://github.com/cmungall/owl.js">owl.js on github</a>]
 File: OWL  (no auto-title, owl.js)
 File: OWLFrame  (owlframe.js)
 File: DLMatch  (dlmatch.js)
+File: Differ  (Differ.js)
+File: Linky  (linky.js)
+File: obol  (obol.js)
 File: repl  (repl.js)
 File: javautil  (javautil.js)
-File: obol  (obol.js)
 File: vocab.obo  (vocab/obo.js)
-File: Differ  (Differ.js)
+File: vocab.nif  (vocab/nif.js)
+File: Dotty  (io/dotty.js)
 
 Group: Index  {
 

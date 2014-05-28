@@ -1,0 +1,3 @@
+#!/bin/sh
+X=`which owljs-sed.js`
+ringo-owl $X "$@"

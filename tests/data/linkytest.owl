@@ -1,0 +1,73 @@
+Ontology: <http:/x.org>
+Prefix: obo: <http://purl.obolibrary.org/obo/>
+
+Class: obo:X_1
+
+Class: obo:X_11
+  SubClassOf: obo:X_1
+
+Class: obo:X_12
+  SubClassOf: obo:X_1
+
+Class: obo:X_111
+  SubClassOf: obo:X_11
+
+Class: obo:X_112
+  SubClassOf: obo:X_11
+
+Class: obo:X_113
+  SubClassOf: obo:X_11
+
+Class: obo:X_121
+  SubClassOf: obo:X_12
+
+Class: obo:X_122
+  SubClassOf: obo:X_12
+
+Class: obo:X_123
+  SubClassOf: obo:X_12
+
+Class: obo:X_1111
+  SubClassOf: obo:X_111
+
+Class: obo:X_1231
+  SubClassOf: obo:X_123
+
+
+
+Class: obo:Y_1
+
+Class: obo:Y_11
+  SubClassOf: obo:Y_1
+  EquivalentTo: obo:X_1231
+
+Class: obo:Y_12
+  SubClassOf: obo:Y_1
+
+Class: obo:Y_111
+  SubClassOf: obo:Y_11
+
+Class: obo:Y_112
+  SubClassOf: obo:Y_11
+
+Class: obo:Y_113
+  SubClassOf: obo:Y_11
+
+Class: obo:Y_121
+  SubClassOf: obo:Y_12
+
+Class: obo:Y_122
+  SubClassOf: obo:Y_12
+  EquivalentTo: obo:X_12
+
+Class: obo:Y_123
+  SubClassOf: obo:Y_12
+  EquivalentTo: obo:X_12
+
+Class: obo:Y_1111
+  SubClassOf: obo:Y_111
+  EquivalentTo: obo:X_1111
+
+Class: obo:Y_1231
+  SubClassOf: obo:Y_123
+  EquivalentTo: obo:X_1231

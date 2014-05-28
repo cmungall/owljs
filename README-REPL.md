@@ -95,6 +95,15 @@ You will see various choices:
     nervous_system               
     nervous_system_development
 
+This also works for methods and functions too. If you forget your OWL syntax you can type:
+
+    >> subClassOf(o.neuron, some[TAB]
+    someValuesFrom(
+    >> subClassOf(o.neuron, someValuesFrom(
+
+In this case there is only one option, so the readline autocomplete
+will complete the full construct name for you.
+
 ## Queries and matching
 
 The "q" variable is initiated with a dlmatch object. See dlmatch

@@ -1,0 +1,4 @@
+#!/bin/sh
+owljs-diff $6 $7
+#exit 0
+##svn diff --diff-cmd owljs-diff "$@"

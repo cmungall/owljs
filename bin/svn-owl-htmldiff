@@ -1,0 +1,2 @@
+#!/bin/sh
+svn diff --diff-cmd owljs-svn-diffwrap "$@" > diff.md && pandoc diff.md -o diff.html && open diff.html

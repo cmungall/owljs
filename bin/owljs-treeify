@@ -1,0 +1,3 @@
+#!/bin/sh
+X=`which owljs-treeify.js`
+ringo-owl $X "$@"

@@ -12,7 +12,7 @@ function init() {
     if (owl == null) {
         owl = new OWL();
         repl.owlinit(owl);
-        var owlFile = "test/learner/mptest.ofn";
+        var owlFile = "tests/learner/mptest.ofn";
         owl.loadOntology(owlFile);
         learner = new Learner(owl);
         learner.owlFile = "mptest.ofn";
@@ -27,6 +27,10 @@ exports.testLCS = function() {
     print("D="+d);
     learner.prepLCS(c,d);
     print(learner.renderConfig());
+
+    learner.dir = "tests/learner";
+    var out = learner.learn();
+    print(out);
 };
 
 

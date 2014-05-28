@@ -1,0 +1,2 @@
+#!/bin/sh
+svn diff --diff-cmd owljs-svn-diffwrap "$@"

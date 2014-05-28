@@ -23,6 +23,7 @@ function main(args) {
     parser.addOption('e', 'evaluate', 'Code', 'evals js code block');
     parser.addOption('l', 'load', 'File', 'Evals file contents');
     parser.addOption('x', 'exit', null, 'Exit on completion');
+    parser.addOption('v', 'verbosity', 'Number', 'sets verbosity. >0 logs');
 
     options = parser.parse(args);
 
@@ -43,6 +44,9 @@ function main(args) {
     }
 
     owl = new OWL();
+
+    owl.config.logLevel = options.verbosity;
+
     owl.addCatalog();
 
     args.forEach(function(fn) { owl.loadFile(fn) } );
