@@ -9,7 +9,9 @@ importPackage(Packages.org.semanticweb.owlapi.model);
 var owl;
 var part_of;
 var rels;
+var anProps;
 var relObjs = [];
+var anPropObjs = [];
 var isElk;
 
 function main(args) {
@@ -20,6 +22,7 @@ function main(args) {
     parser.addOption('h', 'help', null, 'Display help');
     parser.addOption('r', 'reasoner', 'Reasoner', 'set reasoner factory. Default is elk.');
     parser.addOption('R', 'relations', 'RelList', 'relations to query over.');
+    parser.addOption('A', 'annotations', 'PropList', 'annotation properties to query over.');
     parser.addOption('f', 'force', null, 'set this to ignore non-found relations.');
     //parser.addOption('N', 'count', 'RelList', 'relations to query over.');
     parser.addOption('c', 'importsClosure', null, 'set this flag if the full import closure is to used');
@@ -67,6 +70,25 @@ function main(args) {
     relObjs = rels.map( function(r) {
         return { obj : r,
                  label : owl.getLabel(r) }});
+
+    if (options.annotations != null) {
+        anProps = [];
+        options.annotations.split(",").forEach(function(rn) {
+            var p = owl.find(rn);
+            if (p == null) {
+                console.warn("Cannot find: "+rn);
+                if (!options.force) {
+                    system.exit(1);
+                }
+            }
+            else {
+                anProps.push(p);
+            }
+        });
+        anPropObjs = anProps.map( function(r) {
+            return { obj : r,
+                     label : owl.getLabel(r) ? owl.getLabel(r) : r  }});
+    }
 
 
 
@@ -117,6 +139,7 @@ function main(args) {
         var vals = getColVals(c, type);
         var line = vals.map(peekVal).join("\t");
 
+        // header
         if (n == 0) {
             line = vals.map(peekName).join("\t") + "\n" + line;
         }
@@ -165,6 +188,14 @@ function getColVals(c, type) {
             { name: "definitionXrefs",
               value: def == null ? "" : def.xrefs.join(",")}
         ];
+    if (anPropObjs) {
+        anPropObjs.forEach(function(r) {
+            vals.push(
+                { name: r.label,
+                  value: owl.getAnnotationValues(c,r.obj).join("|") }
+            );
+        });
+    }
     if (type == 'Class') {
         vals = vals.concat([
             { name: "superClasses",
