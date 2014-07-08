@@ -1,5 +1,6 @@
 var Parser = require('ringo/args').Parser;
 var system = require('system');
+var markdown = require('owljs/io/markdown');
 var {OWL} = require("owljs");
 
 // have this available for evaluation of user functions
@@ -18,6 +19,7 @@ function main(args) {
     parser.addOption('m', 'match', 'Regexp', 'regular expression applied to serialization of each axiom. E.g. /epithelium/. If specified, no FUNCTION arg is specified.');
     parser.addOption('t', 'toOutputFormat', 'OWLOntologyFormat', 'output format (defaults to RDFXML)');
     parser.addOption('j', 'jsFrames', null, 'writes output as js frames. TODO');
+    parser.addOption('M', 'markdown', null, 'writes output as markdown.');
 
     var options = parser.parse(args);
 
@@ -33,6 +35,7 @@ function main(args) {
 	system.exit('-1');
     }
 
+    var repl;
     var owl = new OWL();
     owl.addCatalog();
 
@@ -43,7 +46,12 @@ function main(args) {
 
     if (options.match != null) {
         var mf = eval(options.match);
-        grepFunc = function(ax) { return mf.test(ax.toString()); };
+        if (options.grepEntities) {
+            grepFunc = function(obj) { var robj = markdown.renderOWLObject(obj,owl); return mf.test(robj); };
+        }
+        else {
+            grepFunc = function(ax) { return mf.test(ax.toString()); };
+        }
     }
 
     if (options.grepFunctionFile != null) {
@@ -68,11 +76,17 @@ function main(args) {
         owl.log("#filteredObjects = " + filteredObjects.length);
 
         if (options.jsFrames) {
-            var repl = require("owljs/repl");
+            repl = require("owljs/repl");
             repl.owlinit(owl);
             for (var k in filteredObjects) {
                 var obj = filteredObjects[k];
                 print(repl.render(owl.getFrame(obj)));
+            }        
+        }
+        if (options.markdown) {
+            for (var k in filteredObjects) {
+                var obj = filteredObjects[k];
+                print(repl.render(markdown.renderOWLObject(obj,owl)));                                  
             }        
         }
         else {

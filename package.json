@@ -1,5 +1,5 @@
 {
-    "name": "owl",
+    "name": "owljs",
     "version": "0.0.1",
     "description": "A toolkit for using OWL ontologies via the java OWLAPI",
     "homepage": "http://github.com/cmungall/owl.js",

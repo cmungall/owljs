@@ -16,5 +16,6 @@ manager. For now, do this hacky measure:
 
     cd $RINGO_HOME/packages/
     ln -s ~/repos/owljs owl
+    ln -s ~/repos/owljs owljs
 
 
