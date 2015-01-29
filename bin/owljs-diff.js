@@ -9,9 +9,11 @@ function main(args) {
     var script = args.shift();
     var parser = new Parser(system.args);
     var grepFunc = null;
+    var useReasoner = false;
 
     parser.addOption('h', 'help', null, 'Display help');
     parser.addOption('r', 'reasoner', 'Reasoner', 'set reasoner factory. Default is elk. NOT IMPLEMENTED');
+    parser.addOption('e', 'useReasoner', null, 'set this flag if reasoner diffs are tgo be performed');
     parser.addOption('c', 'importsClosure', null, 'set this flag if the full import closure is to be diffed');
     parser.addOption('C', 'catalog', 'File', 'XML catalog for imports');
     parser.addOption('o', 'outputFile', 'File', 'output file (defaults to stdout)');
@@ -39,7 +41,7 @@ function main(args) {
     var incClosure = options.importsClosure == null ? false : true;
 
     var differ = new Differ();
-    var md = differ.getDiffsAsMarkdown(owlA, owlB, incClosure, false);
+    var md = differ.getDiffsAsMarkdown(owlA, owlB, incClosure, useReasoner);
 
     if (options.outputFile != null) {
         var fs = require('fs');

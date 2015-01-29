@@ -23,16 +23,19 @@ exports.testNested = function() {
     var o = repl.o;
     repl.owlinit(owl);
     var nc = repl.mkClass("cell of tentacle of beak");
+    // tentacle of beak
     var tob = owl.intersectionOf(o.tentacle, 
                                owl.someValuesFrom(o.part_of, 
                                                   owl.intersectionOf(o.beak,
                                                                      owl.someValuesFrom(o.part_of,
                                                                                         o.head))));
-    var cell = owl.intersectionOf(o.cell,
-                                  owl.someValuesFrom(o.part_of,
-                                                     tob));
-    owl.add( owl.equivalentClasses(nc, cell) );
+    // cell of TOB
+    var tobcell = owl.intersectionOf(o.cell,
+                                     owl.someValuesFrom(o.part_of,
+                                                        tob));
+    owl.add( owl.equivalentClasses(nc, tobcell) );
 
+    // test for matches of the form: nc == ?genus and ?svf
     find(
         matcher.equivalentClassesMatch(
             nc,
@@ -41,9 +44,10 @@ exports.testNested = function() {
         ),
         1,
         {
-            genus: "cell"
+            genus: "cell" // expect nc == cell and ...
         });
 
+    // ?nc = ?c and part_of some ?t and ?rel some ?z
     find(
         matcher.equivalentClassesMatch(
             "?nc",
@@ -53,6 +57,7 @@ exports.testNested = function() {
                                                                                                 matcher.someValuesFromMatch("?rel","?z"))))
         ),
         1,
+        // expect tobcell == c and part_of some tentacle and ? some ?
         {
             nc: "cell of tentacle of beak",
             c: "cell",

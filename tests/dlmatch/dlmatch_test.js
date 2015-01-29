@@ -84,10 +84,41 @@ exports.testMatchIntersection = function() {
     );
 };
 
+exports.testMatchIntersectionPartial = function() {
+    init();
+    var part_of = owl.find("part of");
+
+    find( 
+        matcher.equivalentClassesMatch(
+            matcher.objectIntersectionOfMatch(
+                "?genus"
+            ),
+            "?c"
+        ),
+        0
+    );
+
+    find( 
+        matcher.equivalentClassesMatch(
+            matcher.objectIntersectionOfMatch(
+                "?genus",
+                "..."
+            ),
+            "?c"
+        ),
+        25,
+        {
+            c: "ovary",
+            genus: "gonad",
+        }
+    );
+};
+
+
 exports.testReplace = function() {
     init();
     var part_of = owl.find("part of");
-    var newAxioms = matcher.findAndReplace(
+    var results = matcher.findAndReplace(
         matcher.subClassOfMatch("?p",
                                     matcher.objectSomeValuesFromMatch(part_of, "?w")),
         function(m, owl) {
@@ -98,6 +129,7 @@ exports.testReplace = function() {
             return ax;
         }
     );
+    var newAxioms = results.newAxioms;
     print("#Repl="+newAxioms.length);
     assert.equal(newAxioms.length, 218);
 
