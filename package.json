@@ -8,7 +8,7 @@
         "owl",
         "semantic web",
         "ringo",
-        "bio-ontology",
+        "bio-ontology"
     ],
     "author": "Chris Mungall <cjmungall@lbl.gov>",
     "contributors": [
@@ -34,7 +34,7 @@
     },
     "bin": {
         "owljs" : "bin/owljs",
-        "owljs-repl.js" : "bin/owljs-repl.js",
+        "owljs-repl.js" : "bin/owljs-repl.js"
     },
     "main": "lib/owl.js"
 }
